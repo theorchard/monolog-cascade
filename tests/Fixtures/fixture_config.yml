@@ -1,0 +1,34 @@
+---
+version: 1
+
+disable_existing_loggers: false
+
+formatters:
+    spaced:
+        format: "%datetime% %channel%.%level_name%  %message%\n"
+        include_stacktraces: true
+    dashed:
+        format: "%datetime%-%channel%.%level_name% - %message%\n"
+
+handlers:
+    console:
+        class: Monolog\Handler\StreamHandler
+        level: DEBUG
+        formatter: spaced
+        stream: php://stdout
+
+    info_file_handler:
+        class: Monolog\Handler\StreamHandler
+        level: INFO
+        formatter: dashed
+        stream: ./demo_info.log
+
+    error_file_handler:
+        class: Monolog\Handler\StreamHandler
+        level: ERROR
+        stream: ./demo_error.log
+        formatter: spaced
+
+loggers:
+    my_logger:
+        handlers: [console, info_file_handler]
