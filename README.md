@@ -1,4 +1,4 @@
-Monolog Cascade
+Monolog Cascade [![Build Status](https://travis-ci.org/theorchard/monolog-cascade.svg?branch=master)](https://travis-ci.org/theorchard/monolog-cascade)
 ===============
 (coming soon...)
 
