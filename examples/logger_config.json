@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "disable_existing_loggers": false,
+  "formatters": {
+    "spaced": {
+      "class": "Monolog\\Formatter\\LineFormatter",
+      "format": "%datetime% %channel%.%level_name%  %message%\n",
+      "include_stacktraces": true
+    },
+    "dashed": {
+      "format": "%datetime%-%channel%.%level_name% - %message%\n"
+    }
+  },
+  "handlers": {
+    "console": {
+      "class": "Monolog\\Handler\\StreamHandler",
+      "level": "DEBUG",
+      "formatter": "spaced",
+      "stream": "php://stdout"
+    },
+    "info_file_handler": {
+      "class": "Monolog\\Handler\\StreamHandler",
+      "level": "INFO",
+      "formatter": "dashed",
+      "stream": "./example_info.log"
+    },
+    "error_file_handler": {
+      "class": "Monolog\\Handler\\StreamHandler",
+      "level": "ERROR",
+      "formatter": "dashed",
+      "stream": "./example_error.log"
+    }
+  },
+  "loggers": {
+    "loggerA": {
+      "handlers": [
+        "console",
+        "info_file_handler"
+      ]
+    },
+    "loggerB": {
+      "handlers": [
+        "console",
+        "error_file_handler"
+      ]
+    }
+  }
+}
