@@ -1,4 +1,4 @@
-Monolog Cascade [![Build Status](https://travis-ci.org/theorchard/monolog-cascade.svg?branch=master)](https://travis-ci.org/theorchard/monolog-cascade)
+Monolog Cascade [![Build Status](https://travis-ci.org/theorchard/monolog-cascade.svg?branch=master)](https://travis-ci.org/theorchard/monolog-cascade) [![Coverage Status](https://coveralls.io/repos/rantonmattei/monolog-cascade/badge.svg)](https://coveralls.io/r/rantonmattei/monolog-cascade)
 ===============
 (coming soon...)
 
