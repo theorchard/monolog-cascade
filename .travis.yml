@@ -16,8 +16,13 @@ env:
 
 matrix:
     include:
+        - php: 5.3
         - php: 5.4
           env: COVERALLS=1 DEFAULT=0
+        - php: 5.5
+        - php: 5.6
+        - php: 7
+        - php: hhvm
         # - php: 5.4
         # env: PHPCS=0 DEFAULT=1
 
@@ -39,4 +44,4 @@ script:
     # - sh -c "if [ '$PHPCS' = '1' ]; then vendor/bin/phpcs -p --extensions=php --standard=PSR2 ./src ./tests; fi"
 
 after_script:
-    - sh -c "if [ '$COVERALLS' = '1' ]; then vendor/bin/coveralls -v ; fi"
+    - sh -c "if [ '$COVERALLS' = '1' ]; then vendor/bin/coveralls ; fi"
