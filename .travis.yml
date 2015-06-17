@@ -29,7 +29,6 @@ install:
   composer install --prefer-source
 
 script:
-    # - sh -c "if [ '$DEFAULT' = '1' ]; then ./vendor/bin/phpunit ; fi"
     - sh -c "if [ '$COVERALLS' = '1' ]; then ./vendor/bin/phpunit --coverage-clover clover.xml ; else ./vendor/bin/phpunit ; fi"
     - sh -c "if [ '$PHPCS' = '1' ]; then vendor/bin/phpcs -p --extensions=php --standard=PSR2 ./src ./tests ; fi"
 
