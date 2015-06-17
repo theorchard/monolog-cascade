@@ -1,4 +1,13 @@
 <?php
+/**
+ * This file is part of the Monolog Cascade package.
+ *
+ * (c) Raphael Antonmattei <rantonmattei@theorchard.com>
+ * (c) The Orchard
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 namespace Cascade\Tests\Config;
 
 use Cascade\Config\ConfigLoader;
@@ -64,5 +73,4 @@ class ConfigLoaderTest extends \PHPUnit_Framework_TestCase
         $json = Fixtures::getSampleJsonString();
         $this->assertEquals(json_decode($json, true), $this->loader->load($json));
     }
-
 }

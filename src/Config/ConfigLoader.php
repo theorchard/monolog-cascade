@@ -1,4 +1,13 @@
 <?php
+/**
+ * This file is part of the Monolog Cascade package.
+ *
+ * (c) Raphael Antonmattei <rantonmattei@theorchard.com>
+ * (c) The Orchard
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 namespace Cascade\Config;
 
 use Symfony\Component\Config\FileLocator;
@@ -11,9 +20,9 @@ use Cascade\Config\Loader\FileLoader\Yaml as YamlLoader;
 
 /**
  * Loader class that loads Yaml, JSON and array from various resources (file, php array, string)
- * @see DelegatingLoader
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
+ * @see    DelegatingLoader
  */
 class ConfigLoader extends DelegatingLoader
 {
@@ -25,7 +34,7 @@ class ConfigLoader extends DelegatingLoader
 
     /**
      * Instantiate a Loader object
-     * @todo: have the locator passed to the constructor so we can load more than one file
+     * @todo have the locator passed to the constructor so we can load more than one file
      */
     public function __construct()
     {
@@ -45,8 +54,9 @@ class ConfigLoader extends DelegatingLoader
     /**
      * Loads a configuration resource: file, array, string
      *
-     * @param  mixed $resource resource to load
-     * @param  mixed $type not used
+     * @param mixed $resource resource to load
+     * @param mixed $type not used
+     *
      * @return array array of config options
      */
     public function load($resource, $type = null)
