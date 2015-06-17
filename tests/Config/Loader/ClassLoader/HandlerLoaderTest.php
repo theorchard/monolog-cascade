@@ -1,4 +1,13 @@
 <?php
+/**
+ * This file is part of the Monolog Cascade package.
+ *
+ * (c) Raphael Antonmattei <rantonmattei@theorchard.com>
+ * (c) The Orchard
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 namespace Cascade\Tests\Config\Loader\ClassLoader;
 
 use Monolog\Formatter\LineFormatter;
@@ -84,7 +93,7 @@ class HandlerLoaderTest extends \PHPUnit_Framework_TestCase
      * @param  mixed    $methodArg  Parameter passed to the closure
      * @param  \Closure $closure    Closure to call
      */
-    private function _testMethodCalledInHandler($class, $methodName, $methodArg, \Closure $closure)
+    private function doTestMethodCalledInHandler($class, $methodName, $methodArg, \Closure $closure)
     {
         // Setup mock and expectations
         $mock = $this->getMockBuilder($class)
@@ -147,6 +156,6 @@ class HandlerLoaderTest extends \PHPUnit_Framework_TestCase
             $class = '\Monolog\Handler\TestHandler';
         }
 
-        $this->_testMethodCalledInHandler($class, $calledMethodName, $optionValue, $closure);
+        $this->doTestMethodCalledInHandler($class, $calledMethodName, $optionValue, $closure);
     }
 }

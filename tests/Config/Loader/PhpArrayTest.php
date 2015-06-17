@@ -1,4 +1,13 @@
 <?php
+/**
+ * This file is part of the Monolog Cascade package.
+ *
+ * (c) Raphael Antonmattei <rantonmattei@theorchard.com>
+ * (c) The Orchard
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 namespace Cascade\Tests\Config\Loader;
 
 use Cascade\Config\Loader\PhpArray as ArrayLoader;
@@ -73,5 +82,4 @@ class PhpArrayTest extends \PHPUnit_Framework_TestCase
         $array = Fixtures::getSamplePhpArray();
         $this->assertTrue($this->arrayLoader->supports($array));
     }
-
 }
