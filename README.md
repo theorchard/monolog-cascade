@@ -28,16 +28,16 @@ Usage
 
 ```php
 <?php
-use Cascade\MonoLogger;
+use Cascade\Cascade;
 
 // configure your loggers
-MonoLogger::fileConfig('path/to/some/config.yaml');
+Cascade::fileConfig('path/to/some/config.yaml');
 ```
 
 Then just use your logger as shown below
 ```php
-MonoLogger::getLogger('myApp')->info('Well, that works!');
-MonoLogger::getLogger('myApp')->error('Maybe not...');
+Cascade::getLogger('myApp')->info('Well, that works!');
+Cascade::getLogger('myApp')->error('Maybe not...');
 ```
 
 Configuring your loggers
