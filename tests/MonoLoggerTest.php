@@ -20,13 +20,19 @@ class MonoLoggerTest extends \PHPUnit_Framework_TestCase
         parent::teardown();
     }
 
-    public function testRegistry()
+    public function testCreateLogger()
     {
-        $logger = MonoLogger::getLogger('test');
+        $logger = MonoLogger::createLogger('test');
 
         $this->assertTrue($logger instanceof Logger);
         $this->assertEquals('test', $logger->getName());
         $this->assertTrue(Registry::hasLogger('test'));
+    }
+
+    public function testRegistry()
+    {
+        // Creates the logger and push it to the registry
+        $logger = MonoLogger::getLogger('test');
 
         // We should get the logger from the registry this time
         $logger2 = MonoLogger::getLogger('test');

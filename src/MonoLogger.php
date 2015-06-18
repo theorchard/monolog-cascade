@@ -10,11 +10,11 @@ use Cascade\Config\ConfigLoader;
 /**
  * Module class that manages Monolog Logger object
  * @see Monolog\Logger
+ * @see Monolog\Registry
  *
- * @todo remove inheritance. There is no need to extend Logger
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
  */
-class MonoLogger extends Logger
+class MonoLogger
 {
     /**
      * Config class that holds options for all registered loggers
@@ -24,7 +24,7 @@ class MonoLogger extends Logger
     protected static $config = null;
 
     /**
-     * Instantiate a new MonoLogger object
+     * Create a new Logger object and push it to the registry
      *
      * @see Monolog\Logger::__construct
      *
@@ -34,8 +34,10 @@ class MonoLogger extends Logger
      * @param callable[] $processors Optional array of processors
      *
      * @throws \InvalidArgumentException: if no name is given
+     *
+     * @return Monolog\Logger newly created Logger
      */
-    public function __construct(
+    public static function createLogger(
         $name,
         array $handlers = array(),
         array $processors = array()
@@ -45,8 +47,10 @@ class MonoLogger extends Logger
             throw new \InvalidArgumentException('Logger name is required.');
         }
 
-        parent::__construct($name, $handlers, $processors);
-        Registry::addLogger($this);
+        $logger = new Logger($name, $handlers, $processors);
+        Registry::addLogger($logger);
+
+        return $logger;
     }
 
     /**
@@ -58,7 +62,7 @@ class MonoLogger extends Logger
      */
     public static function getLogger($name)
     {
-        return Registry::hasLogger($name) ? Registry::getInstance($name) : new MonoLogger($name);
+        return Registry::hasLogger($name) ? Registry::getInstance($name) : self::createLogger($name);
     }
 
     /**
