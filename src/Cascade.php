@@ -14,7 +14,7 @@ use Cascade\Config\ConfigLoader;
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
  */
-class MonoLogger
+class Cascade
 {
     /**
      * Config class that holds options for all registered loggers
@@ -63,6 +63,18 @@ class MonoLogger
     public static function getLogger($name)
     {
         return Registry::hasLogger($name) ? Registry::getInstance($name) : self::createLogger($name);
+    }
+
+    /**
+     * Alias of getLogger
+     * @see getLogger
+     *
+     * @param  string $name Name of the requested Logger instance
+     * @return Monolog\Logger Requested instance of Logger or new instance
+     */
+    public static function logger($name)
+    {
+        return self::getLogger($name);
     }
 
     /**

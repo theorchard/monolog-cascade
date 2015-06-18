@@ -1,7 +1,7 @@
 <?php
 namespace Cascade\Config\Loader\ClassLoader;
 
-use Cascade\MonoLogger;
+use Cascade\Cascade;
 use Cascade\Config\Loader\ClassLoader;
 
 /**
@@ -55,7 +55,7 @@ class LoggerLoader
         $this->processors = $processors;
 
         // This instanciates a Logger object and set it to the Registry
-        $this->logger = MonoLogger::getLogger($loggerName);
+        $this->logger = Cascade::getLogger($loggerName);
     }
 
     /**

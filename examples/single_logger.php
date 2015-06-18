@@ -1,9 +1,9 @@
 <?php
 require_once(realpath(__DIR__.'/../vendor/autoload.php'));
 
-use Cascade\MonoLogger;
+use Cascade\Cascade;
 
-$logger = MonoLogger::getLogger('some_logger');
+$logger = Cascade::getLogger('some_logger');
 $logger->pushHandler(new Monolog\Handler\StreamHandler('php://stdout'));
 $logger->info('Hellooooo World!');
 
