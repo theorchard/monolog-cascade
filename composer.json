@@ -3,8 +3,15 @@
     "version": "0.0.1",
     "license": "MIT",
     "type": "library",
-    "description": "Monolog extension to configure multiple loggers in a blink of an eye and access them from anywhere",
-    "keywords": ["monolog", "cascade", "monolog extension", "monolog plugin", "monolog utils"],
+    "description": "Monolog extension to configure multiple loggers in the blink of an eye and access them from anywhere",
+    "keywords": ["monolog", "cascade", "monolog extension", "monolog plugin", "monolog utils", "logger", "log"],
+    "authors": [
+        {
+            "name": "Raphaël Antonmattei",
+            "email": "rantonmattei@theorchard.com",
+            "homepage": "https://github.com/rantonmattei"
+        }
+    ],
     "homepage": "https://github.com/theorchard/monolog-cascade",
     "require": {
         "php": ">=5.3.9",
