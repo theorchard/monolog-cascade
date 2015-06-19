@@ -35,9 +35,11 @@
         "mikey179/vfsStream": "~1.4",
         "phpunit/phpcov": "~2.0",
         "phpunit/phpunit": "~4.7",
+        "phpunit/phpunit-mock-objects": "2.3.0",
         "satooshi/php-coveralls": "~0.6",
         "squizlabs/php_codesniffer": "~2.3"
     },
+    "_": "phpunit/phpunit-mock-objects required in 2.3.0 due to https://github.com/sebastianbergmann/phpunit-mock-objects/issues/223",
     "prefer-stable": true,
     "extra": {
         "branch-alias": {
