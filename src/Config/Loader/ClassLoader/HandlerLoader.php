@@ -94,6 +94,11 @@ class HandlerLoader extends ClassLoader
                 'formatter' => function ($instance, FormatterInterface $formatter) {
                     $instance->setFormatter($formatter);
                 }
+            ),
+            'Monolog\Handler\LogglyHandler' => array(
+                'tags' => function ($instance, $tags) {
+                    $instance->setTag($tags);
+                }
             )
         );
     }

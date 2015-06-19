@@ -97,6 +97,7 @@ class HandlerLoaderTest extends \PHPUnit_Framework_TestCase
     {
         // Setup mock and expectations
         $mock = $this->getMockBuilder($class)
+            ->disableOriginalConstructor()
             ->setMethods(array($methodName))
             ->getMock();
 
@@ -136,6 +137,12 @@ class HandlerLoaderTest extends \PHPUnit_Framework_TestCase
                 'formatter',            // Option name
                 new LineFormatter(),    // Option test value
                 'setFormatter'          // Name of the method called by your handler
+            ),
+            array(
+                'Monolog\Handler\LogglyHandler',    // Class name
+                'tags',                             // Option name
+                array('some_tag'),                  // Option test value
+                'setTag'                            // Name of the method called by your handler
             )
         );
     }
@@ -153,7 +160,7 @@ class HandlerLoaderTest extends \PHPUnit_Framework_TestCase
         $closure = $this->getHandler($class, $optionName);
 
         if ($class == '*') {
-            $class = '\Monolog\Handler\TestHandler';
+            $class = 'Monolog\Handler\TestHandler';
         }
 
         $this->doTestMethodCalledInHandler($class, $calledMethodName, $optionValue, $closure);
