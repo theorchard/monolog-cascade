@@ -10,25 +10,27 @@
  */
 namespace Cascade;
 
+use Cascade\Config;
+use Cascade\Config\ConfigLoader;
+use Monolog\Handler\HandlerInterface;
 use Monolog\Logger;
 use Monolog\Registry;
 
-use Cascade\Config;
-use Cascade\Config\ConfigLoader;
-
 /**
  * Module class that manages Monolog Logger object
- * @see Monolog\Logger
- * @see Monolog\Registry
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
+ *
+ * @see    \Monolog\Logger
+ * @see    \Monolog\Registry
+ *
  */
 class Cascade
 {
     /**
      * Config class that holds options for all registered loggers
      * This is optional, you can set up your loggers programmatically
-     * @var Cascade\Config
+     * @var Config
      */
     protected static $config = null;
 
@@ -37,14 +39,14 @@ class Cascade
      *
      * @see Monolog\Logger::__construct
      *
-     * @param string $name The logging channel
-     * @param HandlerInterface[] $handlers Optional stack of handlers,
-     * the first one in the array is called first, etc.
-     * @param callable[] $processors Optional array of processors
+     * @param string             $name       The logging channel
+     * @param HandlerInterface[] $handlers   Optional stack of handlers, the first one in the array is called first,
+     *                                       etc.
+     * @param callable[]        $processors Optional array of processors
      *
      * @throws \InvalidArgumentException: if no name is given
      *
-     * @return Monolog\Logger newly created Logger
+     * @return Logger newly created Logger
      */
     public static function createLogger(
         $name,
@@ -67,7 +69,8 @@ class Cascade
      * provided name does not exist
      *
      * @param  string $name Name of the requested Logger instance
-     * @return Monolog\Logger Requested instance of Logger or new instance
+     *
+     * @return Logger Requested instance of Logger or new instance
      */
     public static function getLogger($name)
     {
@@ -79,7 +82,8 @@ class Cascade
      * @see getLogger
      *
      * @param  string $name Name of the requested Logger instance
-     * @return Monolog\Logger Requested instance of Logger or new instance
+     *
+     * @return Logger Requested instance of Logger or new instance
      */
     public static function logger($name)
     {

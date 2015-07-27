@@ -10,17 +10,14 @@
  */
 namespace Cascade;
 
-use Cascade\Config\Loader\ClassLoader\ProcessorLoader;
-use Monolog\Formatter\FormatterInterface;
-use Monolog\Handler\HandlerInterface;
-use Monolog\Registry;
-use Symfony\Component\Config\Loader\DelegatingLoader;
-use Symfony\Component\Config\Loader\LoaderResolver;
-
 use Cascade\Config\ConfigLoader;
 use Cascade\Config\Loader\ClassLoader\FormatterLoader;
 use Cascade\Config\Loader\ClassLoader\HandlerLoader;
 use Cascade\Config\Loader\ClassLoader\LoggerLoader;
+use Cascade\Config\Loader\ClassLoader\ProcessorLoader;
+use Monolog\Formatter\FormatterInterface;
+use Monolog\Handler\HandlerInterface;
+use Monolog\Registry;
 
 /**
  * Config class that takes a config resource (file, JSON, Yaml, etc.) and configure Loggers with
@@ -62,7 +59,7 @@ class Config
 
     /**
      * Array of logger objects
-     * @var Monolog\Logger[]
+     * @var \Monolog\Logger[]
      */
     protected $loggers = array();
 
