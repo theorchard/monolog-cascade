@@ -32,6 +32,11 @@
       "encoding": "utf8"
     }
   },
+  "processors": {
+    "tag_processor": {
+      "class": "Monolog\\Processor\\TagProcessor"
+    }
+  },
   "loggers": {
     "my_logger": {
       "level": "ERROR",

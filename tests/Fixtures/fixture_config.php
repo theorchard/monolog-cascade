@@ -44,7 +44,11 @@ $fixtureArray = array(
             'formatter' => 'spaced'
         )
     ),
-    'processors' => array(),
+    'processors' => array(
+        'tag_processor' => array(
+            'class' => 'Monolog\Processor\TagProcessor'
+        )
+    ),
     'loggers' => array(
         'my_logger' => array(
             'handlers' => array('console', 'info_file_handler')

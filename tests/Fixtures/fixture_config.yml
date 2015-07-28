@@ -10,6 +10,10 @@ formatters:
     dashed:
         format: "%datetime%-%channel%.%level_name% - %message%\n"
 
+processors:
+    tag_processor:
+        class: Monolog\Processor\TagProcessor
+
 handlers:
     console:
         class: Monolog\Handler\StreamHandler
