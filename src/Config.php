@@ -10,6 +10,7 @@
  */
 namespace Cascade;
 
+use Cascade\Config\Loader\ClassLoader\ProcessorLoader;
 use Monolog\Formatter\FormatterInterface;
 use Monolog\Handler\HandlerInterface;
 use Monolog\Registry;
@@ -153,12 +154,14 @@ class Config
     /**
      * Configure the processors
      *
-     * @todo Implement adding processors for both Loggers and Handlers
      * @param  array $processors array of processor options
      */
     protected function configureProcessors(array $processors)
     {
-        // To implement
+        foreach ($processors as $processorName => $processorOptions) {
+            $processorLoader = new ProcessorLoader($processorOptions, $this->processors);
+            $this->processors[$processorName] = $processorLoader->load();
+        }
     }
 
     /**
@@ -169,7 +172,7 @@ class Config
     protected function configureLoggers(array $loggers)
     {
         foreach ($loggers as $loggerName => $loggerOptions) {
-            $loggerLoader = new LoggerLoader($loggerName, $loggerOptions, $this->handlers);
+            $loggerLoader = new LoggerLoader($loggerName, $loggerOptions, $this->handlers, $this->processors);
             $this->loggers[$loggerName] = $loggerLoader->load();
         }
     }
