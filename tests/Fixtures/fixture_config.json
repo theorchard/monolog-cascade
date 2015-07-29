@@ -3,33 +3,28 @@
   "disable_existing_loggers": false,
   "formatters": {
     "simple": {
+      "class": "Monolog\\Formatter\\LineFormatter",
       "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     }
   },
   "handlers": {
     "console": {
-      "class": "logging.StreamHandler",
+      "class": "Monolog\\Handler\\StreamHandler",
       "level": "DEBUG",
       "formatter": "simple",
-      "stream": "ext://sys.stdout"
+      "stream": "php://stdout"
     },
     "info_file_handler": {
-      "class": "logging.handlers.RotatingFileHandler",
+      "class": "Monolog\\Handler\\StreamHandler",
       "level": "INFO",
       "formatter": "simple",
-      "filename": "info.log",
-      "maxBytes": 10485760,
-      "backupCount": 20,
-      "encoding": "utf8"
+      "stream": "./info.log"
     },
     "error_file_handler": {
-      "class": "logging.handlers.RotatingFileHandler",
+      "class": "Monolog\\Handler\\StreamHandler",
       "level": "ERROR",
       "formatter": "simple",
-      "filename": "errors.log",
-      "maxBytes": 10485760,
-      "backupCount": 20,
-      "encoding": "utf8"
+      "stream": "./error.log"
     }
   },
   "processors": {
