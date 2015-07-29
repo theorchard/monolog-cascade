@@ -1,6 +1,5 @@
 {
     "name": "theorchard/monolog-cascade",
-    "version": "0.0.2",
     "license": "MIT",
     "type": "library",
     "description": "Monolog extension to configure multiple loggers in the blink of an eye and access them from anywhere",
@@ -43,7 +42,7 @@
     "prefer-stable": true,
     "extra": {
         "branch-alias": {
-            "dev-master": "0.0.x-dev"
+            "dev-master": "0.1.x-dev"
         }
     }
 }
