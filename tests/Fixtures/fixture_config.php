@@ -15,8 +15,6 @@ $fixtureArray = array(
         'spaced' => array(
             'format' => "%datetime% %channel%.%level_name%  %message%\n",
             'include_stacktraces' => true
-            # dummy_option: "heyhey"
-            # date_format: "Y/m/d"
         ),
         'dashed' => array(
             'format' => "%datetime%-%channel%.%level_name% - %message%\n"
