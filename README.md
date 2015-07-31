@@ -167,6 +167,11 @@ Just run Phpunit:
 $ phpunit tests/
 ```
 
+Limitations
+------------
+
+Some Handlers use [Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection) upon instantiation (most of the Database and Key/Value store do). This scenario is a bit harder to support and would require some more thoughts. It is on the roadmap.
+
 Contributing
 ------------
 
@@ -177,9 +182,11 @@ Make sure your code follows the [PSR-2](https://github.com/php-fig/fig-standards
 
 What's next?
 ------------
+ - add support for DB/Store and other handlers requiring injection into the constructor
  - add support for `.ini` config files
  - add support for namespaced Loggers with message propagation (through handler inheritance) so children loggers log messages using parent's handlers
  - add more custom function handlers to cover all the possible options of the current Monolog Formatters and Handlers
+ - ~~add support for Processors (DONE)~~
  - other suggestions?
 
 
