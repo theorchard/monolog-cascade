@@ -99,6 +99,25 @@ class ClassLoader
     }
 
     /**
+     * Recursively loads objects into any of the rawOptions that represent
+     * a class
+     *
+     * @author Dom Morgan <dom@d3r.com>
+     */
+    protected function loadChildClasses()
+    {
+        foreach ($this->rawOptions as &$option) {
+            if (is_array($option)
+                && array_key_exists('class', $option)
+                && class_exists($option['class'])
+            ) {
+                $classLoader = new ClassLoader($option);
+                $option = $classLoader->load();
+            }
+        }
+    }
+
+    /**
      * Return option values indexed by name using camelCased keys
      *
      * @param  array  $options array of options
@@ -163,6 +182,8 @@ class ClassLoader
      */
     public function load()
     {
+        $this->loadChildClasses();
+
         list($constructorResolvedOptions, $extraResolvedOptions) = $this->resolveOptions();
         $instance = $this->reflected->newInstanceArgs($constructorResolvedOptions);
 

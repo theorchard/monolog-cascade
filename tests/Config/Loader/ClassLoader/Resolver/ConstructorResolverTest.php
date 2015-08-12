@@ -13,6 +13,8 @@ namespace Cascade\Tests\Config\Loader\ClassLoader\Resolver;
 use Cascade\Config\Loader\ClassLoader\Resolver\ConstructorResolver;
 use Cascade\Tests\Fixtures\SampleClass;
 
+use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
+
 /**
  * Class ConstructorResolverTest
  *
@@ -74,13 +76,17 @@ class ConstructorResolverTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test that constructor args were pulled properly
+     *
+     * Notie that we need to deuplicate the CamelCase conversion here for old
+     * fashioned classes
      */
     public function testInitConstructorArgs()
     {
         $expectedConstructorArgs = array();
+        $nameConverter = new CamelCaseToSnakeCaseNameConverter();
 
         foreach ($this->getConstructorArgs() as $param) {
-            $expectedConstructorArgs[$param->getName()] = $param;
+            $expectedConstructorArgs[$nameConverter->denormalize($param->getName())] = $param;
         }
         $this->assertEquals($expectedConstructorArgs, $this->resolver->getConstructorArgs());
     }
@@ -91,12 +97,13 @@ class ConstructorResolverTest extends \PHPUnit_Framework_TestCase
     public function testHashToArgsArray()
     {
         $this->assertEquals(
-            array('someValue', 'hello', 'there'),
+            array('someValue', 'hello', 'there', 'slither'),
             $this->resolver->hashToArgsArray(
                 array( // Not properly ordered on purpose
-                    'optionalB' => 'there',
-                    'optionalA' => 'hello',
-                    'mandatory' => 'someValue'
+                    'optionalB'     => 'there',
+                    'optionalA'     => 'hello',
+                    'optionalSnake' => 'slither',
+                    'mandatory'     => 'someValue',
                 )
             )
         );
@@ -113,22 +120,23 @@ class ConstructorResolverTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(
-                array('someValue', 'hello', 'there'), // Expected resolved options
+                array('someValue', 'hello', 'there', 'slither'), // Expected resolved options
                 array( // Options (order should not matter, part of resolution)
-                    'optionalB' => 'there',
-                    'optionalA' => 'hello',
-                    'mandatory' => 'someValue'
+                    'optionalB'      => 'there',
+                    'optionalA'      => 'hello',
+                    'mandatory'      => 'someValue',
+                    'optionalSnake'  => 'slither',
                 )
             ),
             array(
-                array('someValue', 'hello', 'BBB'),
+                array('someValue', 'hello', 'BBB', 'snake'),
                 array(
                     'mandatory' => 'someValue',
-                    'optionalA' => 'hello'
+                    'optionalA' => 'hello',
                 )
             ),
             array(
-                array('someValue', 'AAA', 'BBB'),
+                array('someValue', 'AAA', 'BBB', 'snake'),
                 array('mandatory' => 'someValue')
             )
         );
