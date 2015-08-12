@@ -156,10 +156,10 @@ class ClassLoaderTest extends \PHPUnit_Framework_TestCase
     {
         $options = array(
             'class' => 'Cascade\Tests\Fixtures\DependentClass',
-            'dependency' => [
+            'dependency' => array(
                 'class' => 'Cascade\Tests\Fixtures\SampleClass',
                 'mandatory' => 'someValue',
-            ]
+            )
         );
 
         $loader = new ClassLoader($options);
