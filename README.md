@@ -93,6 +93,8 @@ If some parameters are not present in the constructor, they will be treated as e
 
 - **_loggers_** - the derived array (from the Yaml or JSON) in which each key is the logger identifier contains only a `handlers` key. You can decide what handler(s) you would like you logger to use.
 
+**Note**: If you would like to use objects as parameters for your handlers, you can pass a class name (using the `class` option) with the corresponding arguments just like you would configure your handler. Cascade recursively instantiates and loads those objects as it parses the config file. See [this sample config file](https://github.com/theorchard/monolog-cascade/blob/master/examples/dependency_config.yml).
+
 #### Parameter case
 You can use either _underscored_ or _camelCased_ style in your config files, it does not matter. However, it is important that they match the names of the arguments from the constructor method.
 
@@ -167,11 +169,6 @@ Just run Phpunit:
 $ phpunit tests/
 ```
 
-Limitations
-------------
-
-Some Handlers use [Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection) upon instantiation (most of the Database and Key/Value store do). This scenario is a bit harder to support and would require some more thoughts. It is on the roadmap.
-
 Contributing
 ------------
 
@@ -182,11 +179,11 @@ Make sure your code follows the [PSR-2](https://github.com/php-fig/fig-standards
 
 What's next?
 ------------
- - add support for DB/Store and other handlers requiring injection into the constructor
  - add support for `.ini` config files
  - add support for namespaced Loggers with message propagation (through handler inheritance) so children loggers log messages using parent's handlers
  - add more custom function handlers to cover all the possible options of the current Monolog Formatters and Handlers
  - ~~add support for Processors (DONE)~~
+ - ~~add support for DB/Store and other handlers requiring injection into the constructor ([issue #30](https://github.com/theorchard/monolog-cascade/issues/30)) (DONE)~~
  - other suggestions?
 
 
