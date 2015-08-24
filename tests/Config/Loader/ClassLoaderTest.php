@@ -16,6 +16,7 @@ use Monolog\Registry;
 
 use Cascade\Config\Loader\ClassLoader;
 use Cascade\Tests\Fixtures\SampleClass;
+use Cascade\Tests\Fixtures\DependentClass;
 
 /**
  * Class ClassLoaderTest
@@ -142,6 +143,31 @@ class ClassLoaderTest extends \PHPUnit_Framework_TestCase
         $expectedInstance->optionalY = 'testing other stuff';
         $expectedInstance->setHello('HELLO');
         $expectedInstance->setThere('THERE!!!');
+
+        $this->assertEquals($expectedInstance, $instance);
+    }
+
+    /**
+     * Test a nested class to load
+     *
+     * @author Dom Morgan <dom@d3r.com>
+     */
+    public function testLoadDependency()
+    {
+        $options = array(
+            'class' => 'Cascade\Tests\Fixtures\DependentClass',
+            'dependency' => array(
+                'class' => 'Cascade\Tests\Fixtures\SampleClass',
+                'mandatory' => 'someValue',
+            )
+        );
+
+        $loader = new ClassLoader($options);
+        $instance = $loader->load();
+
+        $expectedInstance = new DependentClass(
+            new SampleClass('someValue')
+        );
 
         $this->assertEquals($expectedInstance, $instance);
     }

@@ -11,6 +11,7 @@
 namespace Cascade\Config\Loader\ClassLoader\Resolver;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 
 /**
  * Constructor Resolver. Pull args from the contructor and set up an option
@@ -55,15 +56,19 @@ class ConstructorResolver
     /**
      * Fetches constructor args (array of ReflectionParameter) from the reflected class
      * and set them as an associative array
+     *
+     * Convert the parameter names to camelCase for classes that have contructor
+     * params defined in snake_case for consistency with the options
      */
     public function initConstructorArgs()
     {
         $constructor = $this->reflected->getConstructor();
+        $nameConverter = new CamelCaseToSnakeCaseNameConverter();
 
         if (!is_null($constructor)) {
             // Index parameters by their names
             foreach ($constructor->getParameters() as $param) {
-                $this->constructorArgs[$param->getName()] = $param;
+                $this->constructorArgs[$nameConverter->denormalize($param->getName())] = $param;
             }
         }
     }

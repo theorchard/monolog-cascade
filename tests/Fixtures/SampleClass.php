@@ -69,7 +69,8 @@ class SampleClass
     public function __construct(
         $mandatory,
         $optionalA = 'AAA',
-        $optionalB = 'BBB'
+        $optionalB = 'BBB',
+        $optional_snake = 'snake'
     ) {
         $this->setMandatory($mandatory);
     }
