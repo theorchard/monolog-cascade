@@ -93,7 +93,7 @@ If some parameters are not present in the constructor, they will be treated as e
 
 - **_loggers_** - the derived array (from the Yaml or JSON) in which each key is the logger identifier contains only a `handlers` key. You can decide what handler(s) you would like you logger to use.
 
-**Note**: If you would like to use objects as parameters for your handlers, you can pass a class name (using the `class` option) with the corresponding arguments just like you would configure your handler. Cascade recursively instantiates and loads those objects as it parses the config file.
+**Note**: If you would like to use objects as parameters for your handlers, you can pass a class name (using the `class` option) with the corresponding arguments just like you would configure your handler. Cascade recursively instantiates and loads those objects as it parses the config file. See [this sample config file](https://github.com/theorchard/monolog-cascade/blob/master/examples/dependency_config.yml).
 
 #### Parameter case
 You can use either _underscored_ or _camelCased_ style in your config files, it does not matter. However, it is important that they match the names of the arguments from the constructor method.
