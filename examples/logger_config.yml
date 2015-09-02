@@ -12,6 +12,10 @@ formatters:
     dashed:
         format: "%datetime%-%channel%.%level_name% - %message%\n"
 
+processors:
+    web_processor:
+        class: Monolog\Processor\WebProcessor
+
 handlers:
     console:
         class: Monolog\Handler\StreamHandler
@@ -34,3 +38,4 @@ loggers:
         handlers: [console, info_file_handler]
     loggerB:
         handlers: [console, error_file_handler]
+        processors: [web_processor]
