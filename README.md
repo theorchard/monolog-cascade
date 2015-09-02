@@ -65,14 +65,18 @@ handlers:
         level: INFO
         formatter: dashed
         stream: ./example_info.log
+processors:
+    web_processor:
+        class: Monolog\Processor\WebProcessor
 loggers:
     myLogger:
         handlers: [console, info_file_handler]
+        processors: [web_processor]
 ```
 
 More informations on how the Cascade config parser loads and reads the parameters:
 
-Only the `loggers` key is required. If `formatters` and `handlers` are ommitted, Monolog's default will be used. (see note at the bottom)
+Only the `loggers` key is required. If `formatters` and/or `handlers` are ommitted, Monolog's default will be used. `processors` is optional and if ommitted, no processors will be used. (See the "Optional Keys" section further below).
 
 Other keys are optional and would be interpreted as described below:
 
@@ -91,7 +95,10 @@ If some parameters are not present in the constructor, they will be treated as e
 
     If class is not provided Cascade will default to `Monolog\Handler\StreamHandler`
 
-- **_loggers_** - the derived array (from the Yaml or JSON) in which each key is the logger identifier contains only a `handlers` key. You can decide what handler(s) you would like you logger to use.
+- **_processors_** - the derived associative array (from the Yaml or JSON) in which each key is the processor identifier holds keys/values to configure your processors.<br />The following key is _reserved_:
+    - `class` (required): classname of the processor you would like to use
+
+- **_loggers_** - the derived array (from the Yaml or JSON) in which each key is the logger identifier may contain only a `handlers` key and/or a `processors` key. You can decide what handler(s) and/or processor(s) you would like your logger to use.
 
 **Note**: If you would like to use objects as parameters for your handlers, you can pass a class name (using the `class` option) with the corresponding arguments just like you would configure your handler. Cascade recursively instantiates and loads those objects as it parses the config file. See [this sample config file](https://github.com/theorchard/monolog-cascade/blob/master/examples/dependency_config.yml).
 
@@ -112,7 +119,7 @@ Using a Yaml file:
 Cascade will _camelCase_ all the names of your parameters internally prior to be passed to the constructors.
 
 #### Optional keys
-`formatters` and `handlers` keys are optional. If ommitted Cascade will default to Monolog's default: `Monolog\Formatter\LineFormatter` and `Monolog\Handler\StreamHandler` to `stderr`
+`formatters`, `handlers` and `processors` keys are optional. If ommitted Cascade will default to Monolog's default formatter and handler: `Monolog\Formatter\LineFormatter` and `Monolog\Handler\StreamHandler` to `stderr`. If `processors` is ommitted, your logger(s) won't use any.
 
 #### Default parameters
 If a constructor method provides default value(s) in their declaration, Cascade will look it up and identify those parameters as optional with their default values. It can therefore be ommitted in your config file.
