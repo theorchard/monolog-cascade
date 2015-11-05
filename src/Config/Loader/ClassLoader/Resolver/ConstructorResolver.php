@@ -102,10 +102,10 @@ class ConstructorResolver
     {
         foreach ($this->constructorArgs as $name => $param) {
             if ($param->isOptional()) {
-                if ($this->reflected->isInternal()) {
-                    $optionsResolver->setDefined($name);
-                } else {
+                if ($param->isDefaultValueAvailable()) {
                     $optionsResolver->setDefault($name, $param->getDefaultValue());
+                } else {
+                    $optionsResolver->setDefault($name, null);
                 }
             } else {
                 $optionsResolver->setRequired($name);
@@ -126,9 +126,7 @@ class ConstructorResolver
         $optionsArray = new \SplFixedArray(count($hashOfOptions));
 
         foreach ($this->constructorArgs as $name => $param) {
-            if (isset($hashOfOptions[$name])) {
-                $optionsArray[$param->getPosition()] = $hashOfOptions[$name];
-            }
+            $optionsArray[$param->getPosition()] = $hashOfOptions[$name];
         }
 
         return $optionsArray->toArray();
