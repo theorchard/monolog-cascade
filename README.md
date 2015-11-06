@@ -74,7 +74,7 @@ loggers:
         processors: [web_processor]
 ```
 
-More informations on how the Cascade config parser loads and reads the parameters:
+More information on how the Cascade config parser loads and reads the parameters:
 
 Only the `loggers` key is required. If `formatters` and/or `handlers` are ommitted, Monolog's default will be used. `processors` is optional and if ommitted, no processors will be used. (See the "Optional Keys" section further below).
 
