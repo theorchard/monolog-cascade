@@ -101,12 +101,8 @@ class ConstructorResolver
     protected function configureOptions(OptionsResolver $optionsResolver)
     {
         foreach ($this->constructorArgs as $name => $param) {
-            if ($param->isOptional()) {
-                if ($param->isDefaultValueAvailable()) {
-                    $optionsResolver->setDefault($name, $param->getDefaultValue());
-                } else {
-                    $optionsResolver->setDefault($name, null);
-                }
+            if ($param->isOptional() && $param->isDefaultValueAvailable()) {
+                $optionsResolver->setDefault($name, $param->getDefaultValue());
             } else {
                 $optionsResolver->setRequired($name);
             }
