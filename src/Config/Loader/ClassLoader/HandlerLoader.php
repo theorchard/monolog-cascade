@@ -36,10 +36,15 @@ class HandlerLoader extends ClassLoader
      *
      * @param array $handlerOptions Handler options
      * @param Monolog\Formatter\FormatterInterface[] $formatters Array of formatter to pick from
+     * @param callable[] $processors Array of processors to pick from
      */
-    public function __construct(array &$handlerOptions, array $formatters = array())
-    {
+    public function __construct(
+        array &$handlerOptions,
+        array $formatters = array(),
+        array $processors = array()
+    ) {
         $this->populateFormatters($handlerOptions, $formatters);
+        $this->populateProcessors($handlerOptions, $processors);
         parent::__construct($handlerOptions);
 
         self::initExtraOptionsHandlers();
@@ -74,6 +79,37 @@ class HandlerLoader extends ClassLoader
     }
 
     /**
+     * Replace the processors in the option array with the corresponding callable from the
+     * array of loaded and callable processors, if it exists.
+     *
+     * @throws InvalidArgumentException
+     *
+     * @param  array &$handlerOptions Handler options
+     * @param  callable[] $processors Array of processors to pick from
+     */
+    private function populateProcessors(array &$handlerOptions, array $processors)
+    {
+        $processorArray = array();
+
+        if (isset($handlerOptions['processors'])) {
+            foreach ($handlerOptions['processors'] as $processorId) {
+                if (isset($processors[$processorId])) {
+                    $processorArray[] = $processors[$processorId];
+                } else {
+                    throw new \InvalidArgumentException(
+                        sprintf(
+                            'Cannot add processor "%s" to the handler. Processor not found.',
+                            $processorId
+                        )
+                    );
+                }
+            }
+
+            $handlerOptions['processors'] = $processorArray;
+        }
+    }
+
+    /**
      * Loads the closures as option handlers. Add handlers to this function if
      * you want to support additional custom options.
      *
@@ -93,6 +129,12 @@ class HandlerLoader extends ClassLoader
             '*' => array(
                 'formatter' => function ($instance, FormatterInterface $formatter) {
                     $instance->setFormatter($formatter);
+                },
+                'processors' => function ($instance, array $processors) {
+                    // We need to reverse the array because Monolog "pushes" processors to top of the stack
+                    foreach (array_reverse($processors) as $processor) {
+                        $instance->pushProcessor($processor);
+                    }
                 }
             ),
             'Monolog\Handler\LogglyHandler' => array(
