@@ -68,6 +68,8 @@ handlers:
 processors:
     web_processor:
         class: Monolog\Processor\WebProcessor
+    memory_processor:
+        class: Monolog\Processor\MemoryUsageProcessor
 loggers:
     myLogger:
         handlers: [console, info_file_handler]
@@ -89,6 +91,7 @@ If some parameters are not present in the constructor, they will be treated as e
 - **_handlers_** - the derived associative array (from the Yaml or JSON) in which each key is the handler identifier holds keys/values to configure your handlers.<br />The following keys are _reserved_:
     - `class` (optional): classname of the handler you would like to use
     - `formatter` (optional): formatter identifier that you have defined
+    - `processors` (optional): array of processor identifiers that you have defined
 
     Other parameters will be interpreted as constructor parameters for that Handler class and passed in when the handler object is instantiated by the Cascade config loader.<br />
     If some parameters are not present in the constructor, they will be interpreted as extra parameters and Cascade will try to interpret them should they match any custom handler functions that are able to use them. (see [Extra Parameters](#user-content-extra-parameters-other-than-constructors) section below)
