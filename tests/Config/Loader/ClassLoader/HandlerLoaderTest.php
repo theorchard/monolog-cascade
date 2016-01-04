@@ -23,16 +23,26 @@ class HandlerLoaderTest extends \PHPUnit_Framework_TestCase
 {
     public function testHandlerLoader()
     {
+        $dummyClosure = function () {
+            // Empty function
+        };
         $original = $options = array(
             'class' => '\Monolog\Handler\TestHandler',
             'level' => 'DEBUG',
-            'formatter' => 'test_formatter'
+            'formatter' => 'test_formatter',
+            'processors' => array('test_processor_1', 'test_processor_2')
         );
         $formatters = array('test_formatter' => new LineFormatter());
-        $loader = new HandlerLoader($options, $formatters);
+        $processors = array(
+            'test_processor_1' => $dummyClosure,
+            'test_processor_2' => $dummyClosure
+        );
+        $loader = new HandlerLoader($options, $formatters, $processors);
 
         $this->assertNotEquals($original, $options);
         $this->assertEquals(new LineFormatter(), $options['formatter']);
+        $this->assertContains($dummyClosure, $options['processors']);
+        $this->assertContains($dummyClosure, $options['processors']);
     }
 
     public function testHandlerLoaderWithNoOptions()
@@ -54,6 +64,23 @@ class HandlerLoaderTest extends \PHPUnit_Framework_TestCase
 
         $formatters = array('test_formatterXYZ' => new LineFormatter());
         $loader = new HandlerLoader($options, $formatters);
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testHandlerLoaderWithInvalidProcessor()
+    {
+        $dummyClosure = function () {
+            // Empty function
+        };
+        $options = array(
+            'processors' => array('test_processor_1')
+        );
+
+        $formatters = array();
+        $processors = array('test_processorXYZ' => $dummyClosure);
+        $loader = new HandlerLoader($options, $formatters, $processors);
     }
 
     /**
@@ -164,5 +191,31 @@ class HandlerLoaderTest extends \PHPUnit_Framework_TestCase
         }
 
         $this->doTestMethodCalledInHandler($class, $calledMethodName, $optionValue, $closure);
+    }
+
+    /**
+     * Test extra option processor handler
+     */
+    public function testHandlerForProcessor()
+    {
+        $options = array();
+
+        $mockProcessor1 = '123';
+        $mockProcessor2 = '456';
+        $processorsArray = array($mockProcessor1, $mockProcessor2);
+
+        // Setup mock and expectations
+        $mockHandler = $this->getMockBuilder('Monolog\Handler\TestHandler')
+            ->disableOriginalConstructor()
+            ->setMethods(array('pushProcessor'))
+            ->getMock();
+
+        $mockHandler->expects($this->exactly(sizeof($processorsArray)))
+            ->method('pushProcessor')
+            ->withConsecutive(array($mockProcessor2), array($mockProcessor1));
+
+        new HandlerLoader($options);
+        $closure = $this->getHandler('*', 'processors');
+        $closure($mockHandler, $processorsArray);
     }
 }

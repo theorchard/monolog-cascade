@@ -61,15 +61,15 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
             ->setConstructorArgs(array($options, $configLoader))
             ->setMethods(array(
                     'configureFormatters',
-                    'configureHandlers',
                     'configureProcessors',
+                    'configureHandlers',
                     'configureLoggers'
                 ))
             ->getMock();
 
         $config->expects($this->once())->method('configureFormatters');
-        $config->expects($this->once())->method('configureHandlers');
         $config->expects($this->once())->method('configureProcessors');
+        $config->expects($this->once())->method('configureHandlers');
         $config->expects($this->once())->method('configureLoggers');
 
         $config->load();

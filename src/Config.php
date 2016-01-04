@@ -107,12 +107,12 @@ class Config
             $this->configureFormatters($this->options['formatters']);
         }
 
-        if (isset($this->options['handlers'])) {
-            $this->configureHandlers($this->options['handlers']);
-        }
-
         if (isset($this->options['processors'])) {
             $this->configureProcessors($this->options['processors']);
+        }
+
+        if (isset($this->options['handlers'])) {
+            $this->configureHandlers($this->options['handlers']);
         }
 
         if (isset($this->options['loggers'])) {
@@ -143,7 +143,7 @@ class Config
     protected function configureHandlers(array $handlers)
     {
         foreach ($handlers as $handlerId => $handlerOptions) {
-            $handlerLoader = new HandlerLoader($handlerOptions, $this->formatters);
+            $handlerLoader = new HandlerLoader($handlerOptions, $this->formatters, $this->processors);
             $this->handlers[$handlerId] = $handlerLoader->load();
         }
     }
