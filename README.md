@@ -59,6 +59,7 @@ handlers:
         class: Monolog\Handler\StreamHandler
         level: DEBUG
         formatter: dashed
+        processors: [memory_processor]
         stream: php://stdout
     info_file_handler:
         class: Monolog\Handler\StreamHandler
