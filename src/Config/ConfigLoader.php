@@ -15,6 +15,7 @@ use Symfony\Component\Config\Loader\DelegatingLoader;
 use Symfony\Component\Config\Loader\LoaderResolver;
 
 use Cascade\Config\Loader\PhpArray as ArrayLoader;
+use Cascade\Config\Loader\FileLoader\PhpArray as ArrayFromFileLoader;
 use Cascade\Config\Loader\FileLoader\Json as JsonLoader;
 use Cascade\Config\Loader\FileLoader\Yaml as YamlLoader;
 
@@ -44,6 +45,7 @@ class ConfigLoader extends DelegatingLoader
             // Do not change that order, it does matter as the resolver returns the first loader
             // that meets the requirements of the "supports" method for each of those loaders
             new ArrayLoader(),
+            new ArrayFromFileLoader($this->locator),
             new JsonLoader($this->locator),
             new YamlLoader($this->locator)
         ));

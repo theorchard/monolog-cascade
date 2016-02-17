@@ -51,7 +51,7 @@ class ConfigLoaderTest extends \PHPUnit_Framework_TestCase
         );
 
         $configLoaders = $this->loader->getResolver()->getLoaders();
-        $this->assertCount(3, $configLoaders);
+        $this->assertCount(4, $configLoaders);
 
         // Checking the order of thr loaders
         $this->assertInstanceOf(
@@ -59,12 +59,16 @@ class ConfigLoaderTest extends \PHPUnit_Framework_TestCase
             $configLoaders[0]
         );
         $this->assertInstanceOf(
-            'Cascade\Config\Loader\FileLoader\Json',
+            'Cascade\Config\Loader\FileLoader\PhpArray',
             $configLoaders[1]
         );
         $this->assertInstanceOf(
-            'Cascade\Config\Loader\FileLoader\Yaml',
+            'Cascade\Config\Loader\FileLoader\Json',
             $configLoaders[2]
+        );
+        $this->assertInstanceOf(
+            'Cascade\Config\Loader\FileLoader\Yaml',
+            $configLoaders[3]
         );
     }
 

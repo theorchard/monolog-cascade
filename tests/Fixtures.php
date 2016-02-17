@@ -108,9 +108,7 @@ class Fixtures
      */
     public static function getPhpArrayConfig()
     {
-        require self::fixtureDir().'/fixture_config.php';
-
-        return $fixtureArray;
+        return require self::fixtureDir().'/fixture_config.php';
     }
 
     /**
