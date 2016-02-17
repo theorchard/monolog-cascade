@@ -23,10 +23,10 @@ abstract class FileLoaderAbstract extends FileLoader
 
     /**
      * Read from a file or string
-     * @throws RuntimeException if the file is not readable
+     * @throws \RuntimeException if the file is not readable
      *
      * @param  string $input Filepath or string
-     * @return atring return a string
+     * @return string return a string
      */
     public function readFrom($input)
     {

@@ -32,7 +32,7 @@ class ExtraOptionsResolver
     /**
      * Registry of resolvers
      *
-     * @var array
+     * @var OptionsResolver[]
      */
     private static $resolvers = array();
 

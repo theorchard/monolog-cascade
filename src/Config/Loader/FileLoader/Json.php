@@ -10,8 +10,6 @@
  */
 namespace Cascade\Config\Loader\FileLoader;
 
-use Symfony\Component\Config\Loader\FileLoader;
-
 /**
  * JSON loader class. It can load a JSON string or a Yaml file
  * @see FileLoaderAbstract

@@ -25,7 +25,7 @@ use Cascade\Config\Loader\ClassLoader\Resolver\ExtraOptionsResolver;
  *         'some_other_param' => 'sdsad'
  *     )
  *
- * Some of them are applicable to the contructor, other are applicable to other handlers.
+ * Some of them are applicable to the constructor, other are applicable to other handlers.
  * For the latter you need to make sure there is a handler defined for that option
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
@@ -56,7 +56,7 @@ class ClassLoader
 
     /**
      * Reflected object of the class passed in
-     * @var ReflectionClass
+     * @var \ReflectionClass
      */
     protected $reflected = null;
 
@@ -209,7 +209,7 @@ class ClassLoader
      * Get the corresponding handler for a given option
      *
      * @param  string $extraOptionName Option name
-     * @return Closure|null Corresponding Closure object or null if not found
+     * @return \Closure|null Corresponding Closure object or null if not found
      */
     public function getExtraOptionsHandler($extraOptionName)
     {

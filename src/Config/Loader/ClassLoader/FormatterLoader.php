@@ -11,6 +11,7 @@
 namespace Cascade\Config\Loader\ClassLoader;
 
 use Cascade\Config\Loader\ClassLoader;
+use Monolog\Formatter\LineFormatter;
 
 /**
  * Formatter Loader. Loads the Formatter options, validate them and instantiates
@@ -61,7 +62,7 @@ class FormatterLoader extends ClassLoader
     {
         self::$extraOptionHandlers = array(
             '\Monolog\Formatter\LineFormatter' => array(
-                'includeStacktraces' => function ($instance, $include) {
+                'includeStacktraces' => function (LineFormatter $instance, $include) {
                     $instance->includeStacktraces($include);
                 }
             )

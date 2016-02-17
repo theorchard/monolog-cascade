@@ -1,5 +1,6 @@
 .DS_Store
-composer.lock
-composer.phar
-phpunit.xml
-vendor
+/composer.lock
+/composer.phar
+/phpunit.xml
+/vendor
+/.idea
