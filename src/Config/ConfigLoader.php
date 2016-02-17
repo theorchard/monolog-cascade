@@ -28,7 +28,7 @@ class ConfigLoader extends DelegatingLoader
 {
     /**
      * Locator
-     * @var Symfony\Component\Config\FileLocator
+     * @var \Symfony\Component\Config\FileLocator
      */
     protected $locator = null;
 

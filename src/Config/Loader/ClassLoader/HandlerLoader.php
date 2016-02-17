@@ -13,6 +13,8 @@ namespace Cascade\Config\Loader\ClassLoader;
 use Monolog\Formatter\FormatterInterface;
 
 use Cascade\Config\Loader\ClassLoader;
+use Monolog\Handler\HandlerInterface;
+use Monolog\Handler\LogglyHandler;
 
 /**
  * Handler Loader. Loads the Handler options, validate them and instantiates
@@ -35,7 +37,7 @@ class HandlerLoader extends ClassLoader
      * @see Monolog\Handler classes for handler options
      *
      * @param array $handlerOptions Handler options
-     * @param Monolog\Formatter\FormatterInterface[] $formatters Array of formatter to pick from
+     * @param \Monolog\Formatter\FormatterInterface[] $formatters Array of formatter to pick from
      * @param callable[] $processors Array of processors to pick from
      */
     public function __construct(
@@ -60,7 +62,7 @@ class HandlerLoader extends ClassLoader
      * @throws \InvalidArgumentException
      *
      * @param  array &$handlerOptions Handler options
-     * @param  Monolog\Formatter\FormatterInterface[] $formatters Array of formatter to pick from
+     * @param  \Monolog\Formatter\FormatterInterface[] $formatters Array of formatter to pick from
      */
     private function populateFormatters(array &$handlerOptions, array $formatters)
     {
@@ -127,10 +129,10 @@ class HandlerLoader extends ClassLoader
     {
         self::$extraOptionHandlers = array(
             '*' => array(
-                'formatter' => function ($instance, FormatterInterface $formatter) {
+                'formatter' => function (HandlerInterface $instance, FormatterInterface $formatter) {
                     $instance->setFormatter($formatter);
                 },
-                'processors' => function ($instance, array $processors) {
+                'processors' => function (HandlerInterface $instance, array $processors) {
                     // We need to reverse the array because Monolog "pushes" processors to top of the stack
                     foreach (array_reverse($processors) as $processor) {
                         $instance->pushProcessor($processor);
@@ -138,7 +140,7 @@ class HandlerLoader extends ClassLoader
                 }
             ),
             'Monolog\Handler\LogglyHandler' => array(
-                'tags' => function ($instance, $tags) {
+                'tags' => function (LogglyHandler $instance, $tags) {
                     $instance->setTag($tags);
                 }
             )
