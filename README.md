@@ -77,6 +77,57 @@ loggers:
         processors: [web_processor]
 ```
 
+Here is a sample PHP config file:
+```php
+<?php
+
+return array(
+    'version' => 1,
+
+    'formatters' => array(
+        'spaced' => array(
+            'format' => "%datetime% %channel%.%level_name%  %message%\n",
+            'include_stacktraces' => true
+        ),
+        'dashed' => array(
+            'format' => "%datetime%-%channel%.%level_name% - %message%\n"
+        ),
+    ),
+    'handlers' => array(
+        'console' => array(
+            'class' => 'Monolog\Handler\StreamHandler',
+            'level' => 'DEBUG',
+            'formatter' => 'spaced',
+            'stream' => 'php://stdout'
+        ),
+
+        'info_file_handler' => array(
+            'class' => 'Monolog\Handler\StreamHandler',
+            'level' => 'INFO',
+            'formatter' => 'dashed',
+            'stream' => './demo_info.log'
+        ),
+
+        'error_file_handler' => array(
+            'class' => 'Monolog\Handler\StreamHandler',
+            'level' => 'ERROR',
+            'stream' => './demo_error.log',
+            'formatter' => 'spaced'
+        )
+    ),
+    'processors' => array(
+        'tag_processor' => array(
+            'class' => 'Monolog\Processor\TagProcessor'
+        )
+    ),
+    'loggers' => array(
+        'my_logger' => array(
+            'handlers' => array('console', 'info_file_handler')
+        )
+    )
+);
+```
+
 More information on how the Cascade config parser loads and reads the parameters:
 
 Only the `loggers` key is required. If `formatters` and/or `handlers` are ommitted, Monolog's default will be used. `processors` is optional and if ommitted, no processors will be used. (See the "Optional Keys" section further below).
