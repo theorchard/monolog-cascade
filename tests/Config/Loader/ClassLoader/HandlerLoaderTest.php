@@ -218,4 +218,32 @@ class HandlerLoaderTest extends \PHPUnit_Framework_TestCase
         $closure = $this->getHandler('*', 'processors');
         $closure($mockHandler, $processorsArray);
     }
+
+    public function testReplacesHandlerNamesInOptionsArrayWithLoadedCallable()
+    {
+        $options = [
+            'handlers' => [
+                'foo',
+                'bar',
+            ],
+            'handler' => 'baz'
+        ];
+        $handlers = [
+            'foo' => function () {
+                return 'foo';
+            },
+            'bar' => function () {
+                return 'bar';
+            },
+            'baz' => function () {
+                return 'baz';
+            },
+        ];
+
+        $loader = new HandlerLoader($options, [], [], $handlers);
+
+        $this->assertSame($handlers['foo'], $options['handlers'][0]);
+        $this->assertSame($handlers['bar'], $options['handlers'][1]);
+        $this->assertSame($handlers['baz'], $options['handler']);
+    }
 }

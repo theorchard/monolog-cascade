@@ -40,7 +40,20 @@ $fixtureArray = array(
             'level' => 'ERROR',
             'stream' => './demo_error.log',
             'formatter' => 'spaced'
-        )
+        ),
+
+        'group_handler' => array(
+            'class' => 'Monolog\Handler\GroupHandler',
+            'handlers' => [
+                'console',
+                'info_file_handler',
+            ],
+        ),
+
+        'fingers_crossed_handler' => array(
+            'class' => 'Monolog\Handler\FingersCrossedHandler',
+            'handler' => 'group_handler',
+        ),
     ),
     'processors' => array(
         'tag_processor' => array(
