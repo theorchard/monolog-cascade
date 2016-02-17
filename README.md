@@ -93,6 +93,8 @@ If some parameters are not present in the constructor, they will be treated as e
     - `class` (optional): classname of the handler you would like to use
     - `formatter` (optional): formatter identifier that you have defined
     - `processors` (optional): array of processor identifiers that you have defined
+    - `handlers` (optional): array of handler identifiers that you have defined
+    - `handler` (optional): single handler identifier that you have defined
 
     Other parameters will be interpreted as constructor parameters for that Handler class and passed in when the handler object is instantiated by the Cascade config loader.<br />
     If some parameters are not present in the constructor, they will be interpreted as extra parameters and Cascade will try to interpret them should they match any custom handler functions that are able to use them. (see [Extra Parameters](#user-content-extra-parameters-other-than-constructors) section below)
