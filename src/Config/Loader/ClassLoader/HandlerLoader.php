@@ -57,7 +57,7 @@ class HandlerLoader extends ClassLoader
      * If no formatter is specified in the options, Monolog will use its default formatter for the
      * handler
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @param  array &$handlerOptions Handler options
      * @param  Monolog\Formatter\FormatterInterface[] $formatters Array of formatter to pick from
@@ -82,7 +82,7 @@ class HandlerLoader extends ClassLoader
      * Replace the processors in the option array with the corresponding callable from the
      * array of loaded and callable processors, if it exists.
      *
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      *
      * @param  array &$handlerOptions Handler options
      * @param  callable[] $processors Array of processors to pick from

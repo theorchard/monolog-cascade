@@ -71,7 +71,7 @@ class LoggerLoader
      * Resolve handlers for that Logger (if any provided) against an array of previously set
      * up handlers. Returns an array of valid handlers.
      *
-     * @throws InvalidArgumentException if a requested handler is not available in $handlers
+     * @throws \InvalidArgumentException if a requested handler is not available in $handlers
      *
      * @param  array $loggerOptions array of logger options
      * @param  Monolog\Handler\HandlerInterface[] $handlers Available Handlers to resolve against
