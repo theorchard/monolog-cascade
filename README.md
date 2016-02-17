@@ -145,7 +145,7 @@ You may want to have your Formatters and/or Handlers consume values other than v
           format: "%datetime% %channel%.%level_name%  %message%\n"
           include_stacktraces: true
     ```
-    In this example, the `LineFormatter` class has an `includeStackTrace` method that takes a boolean. This method will be called upon instantiation.<br />
+    In this example, the `LineFormatter` class has an `includeStacktraces` method that takes a boolean. This method will be called upon instantiation.<br />
 
 2. _Public member_
     <br />Your Formatter or Handler has a public member that can be set.
