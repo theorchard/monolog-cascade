@@ -44,10 +44,10 @@ return array(
 
         'group_handler' => array(
             'class' => 'Monolog\Handler\GroupHandler',
-            'handlers' => [
+            'handlers' => array(
                 'console',
                 'info_file_handler',
-            ],
+            ),
         ),
 
         'fingers_crossed_handler' => array(
