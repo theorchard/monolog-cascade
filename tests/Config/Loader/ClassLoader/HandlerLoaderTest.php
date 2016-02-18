@@ -40,9 +40,9 @@ class HandlerLoaderTest extends \PHPUnit_Framework_TestCase
         $loader = new HandlerLoader($options, $formatters, $processors);
 
         $this->assertNotEquals($original, $options);
-        $this->assertEquals(new LineFormatter(), $options['formatter']);
-        $this->assertContains($dummyClosure, $options['processors']);
-        $this->assertContains($dummyClosure, $options['processors']);
+        $this->assertSame($formatters['test_formatter'], $options['formatter']);
+        $this->assertSame($processors['test_processor_1'], $options['processors'][0]);
+        $this->assertSame($processors['test_processor_2'], $options['processors'][1]);
     }
 
     public function testHandlerLoaderWithNoOptions()
@@ -81,6 +81,45 @@ class HandlerLoaderTest extends \PHPUnit_Framework_TestCase
         $formatters = array();
         $processors = array('test_processorXYZ' => $dummyClosure);
         $loader = new HandlerLoader($options, $formatters, $processors);
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testHandlerLoaderWithInvalidHandler()
+    {
+        $dummyClosure = function () {
+            // Empty function
+        };
+        $options = array(
+            'handler' => 'test_handler'
+        );
+
+        $formatters = array();
+        $processors = array();
+        $handlers = array('test_handlerXYZ' => $dummyClosure);
+        $loader = new HandlerLoader($options, $formatters, $processors, $handlers);
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testHandlerLoaderWithInvalidHandlers()
+    {
+        $dummyClosure = function () {
+            // Empty function
+        };
+        $options = array(
+            'handlers' => array('test_handler_1', 'test_handler_2')
+        );
+
+        $formatters = array();
+        $processors = array();
+        $handlers = array(
+            'test_handler_1' => $dummyClosure,
+            'test_handlerXYZ' => $dummyClosure
+        );
+        $loader = new HandlerLoader($options, $formatters, $processors, $handlers);
     }
 
     /**
@@ -221,14 +260,17 @@ class HandlerLoaderTest extends \PHPUnit_Framework_TestCase
 
     public function testReplacesHandlerNamesInOptionsArrayWithLoadedCallable()
     {
-        $options = [
-            'handlers' => [
+        $options = array(
+            'handlers' => array(
                 'foo',
                 'bar',
-            ],
+            ),
             'handler' => 'baz'
-        ];
-        $handlers = [
+        );
+
+        $formatters = array();
+        $processors = array();
+        $handlers = array(
             'foo' => function () {
                 return 'foo';
             },
@@ -238,9 +280,9 @@ class HandlerLoaderTest extends \PHPUnit_Framework_TestCase
             'baz' => function () {
                 return 'baz';
             },
-        ];
+        );
 
-        $loader = new HandlerLoader($options, [], [], $handlers);
+        $loader = new HandlerLoader($options, $formatters, $processors, $handlers);
 
         $this->assertSame($handlers['foo'], $options['handlers'][0]);
         $this->assertSame($handlers['bar'], $options['handlers'][1]);
