@@ -31,6 +31,11 @@ use Cascade\Cascade;
 
 // configure your loggers
 Cascade::fileConfig('path/to/some/config.yaml');
+
+// or use php array
+$config = require 'config.php';
+Cascade::fileConfig($config);
+
 ```
 
 Then just use your logger as shown below
@@ -44,7 +49,8 @@ Configuring your loggers
 Monolog Cascade supports the following config formats:
  - Yaml
  - JSON
- - Php array
+ - PHP File returning Array
+ - PHP Array
 
 ### Configuration structure
 Here is a sample Yaml config file:
