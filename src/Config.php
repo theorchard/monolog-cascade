@@ -143,7 +143,7 @@ class Config
     protected function configureHandlers(array $handlers)
     {
         foreach ($handlers as $handlerId => $handlerOptions) {
-            $handlerLoader = new HandlerLoader($handlerOptions, $this->formatters, $this->processors);
+            $handlerLoader = new HandlerLoader($handlerOptions, $this->formatters, $this->processors, $this->handlers);
             $this->handlers[$handlerId] = $handlerLoader->load();
         }
     }

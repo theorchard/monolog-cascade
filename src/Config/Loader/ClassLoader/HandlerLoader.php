@@ -39,14 +39,17 @@ class HandlerLoader extends ClassLoader
      * @param array $handlerOptions Handler options
      * @param \Monolog\Formatter\FormatterInterface[] $formatters Array of formatter to pick from
      * @param callable[] $processors Array of processors to pick from
+     * @param callable[] $handlers Array of handlers to pick from
      */
     public function __construct(
         array &$handlerOptions,
         array $formatters = array(),
-        array $processors = array()
+        array $processors = array(),
+        array $handlers = array()
     ) {
         $this->populateFormatters($handlerOptions, $formatters);
         $this->populateProcessors($handlerOptions, $processors);
+        $this->populateHandlers($handlerOptions, $handlers);
         parent::__construct($handlerOptions);
 
         self::initExtraOptionsHandlers();
@@ -108,6 +111,52 @@ class HandlerLoader extends ClassLoader
             }
 
             $handlerOptions['processors'] = $processorArray;
+        }
+    }
+
+     /**
+     * Replace the handler or handlers in the option array with the corresponding callable(s) from the
+     * array of loaded and callable handlers, if they exist.
+     *
+     * @throws \InvalidArgumentException
+     *
+     * @param  array &$handlerOptions Handler options
+     * @param  callable[] $handlers Array of handlers to pick from
+     */
+    private function populateHandlers(array &$handlerOptions, array $handlers)
+    {
+        $handlerArray = array();
+
+        if (isset($handlerOptions['handlers'])) {
+            foreach ($handlerOptions['handlers'] as $handlerId) {
+                if (isset($handlers[$handlerId])) {
+                    $handlerArray[] = $handlers[$handlerId];
+                } else {
+                    throw new \InvalidArgumentException(
+                        sprintf(
+                            'Cannot add handler "%s" to the handler. Handler not found.',
+                            $handlerId
+                        )
+                    );
+                }
+            }
+
+            $handlerOptions['handlers'] = $handlerArray;
+        }
+
+        if (isset($handlerOptions['handler'])) {
+            $handlerId = $handlerOptions['handler'];
+
+            if (isset($handlers[$handlerId])) {
+                $handlerOptions['handler'] = $handlers[$handlerId];
+            } else {
+                 throw new \InvalidArgumentException(
+                     sprintf(
+                         'Cannot add handler "%s" to the handler. Handler not found.',
+                         $handlerId
+                     )
+                 );
+            }
         }
     }
 
