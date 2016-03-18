@@ -23,14 +23,12 @@ class ConstructorResolver
 {
     /**
      * Reflection class for which you want to resolve constructor options
-     *
      * @var \ReflectionClass
      */
     protected $reflected = null;
 
     /**
      * Registry of resolvers
-     *
      * @var array
      */
     private static $resolvers = array();
@@ -114,8 +112,9 @@ class ConstructorResolver
      * the option values passed in. We assume the passed in array has been resolved already.
      * i.e. That the arg name has an entry in the option array.
      *
-     * @param  array $hashOfOptions array of options
-     * @return array array of ordered args
+     * @param  array $hashOfOptions Array of options
+     *
+     * @return array Array of ordered args
      */
     public function hashToArgsArray($hashOfOptions)
     {
@@ -136,7 +135,8 @@ class ConstructorResolver
      *         'someParam' => 'def',
      *         'someOtherParam' => 'sdsad'
      *     )
-     * @return array array of resolved ordered args
+     *
+     * @return array Array of resolved ordered args
      */
     public function resolve(array $options)
     {

@@ -88,7 +88,7 @@ class SampleClass
     /**
      * Function that sets the optionalA member
      *
-     * @param  mixed $value some value
+     * @param  mixed $value Some value
      */
     public function optionalA($value)
     {
@@ -98,7 +98,7 @@ class SampleClass
     /**
      * Function that sets the optionalX member
      *
-     * @param  mixed $value some value
+     * @param  mixed $value Some value
      */
     public function optionalX($value)
     {
@@ -108,7 +108,7 @@ class SampleClass
     /**
      * Function that sets the hello member
      *
-     * @param  mixed $value some value
+     * @param  mixed $value Some value
      */
     public function setHello($value)
     {
@@ -118,7 +118,7 @@ class SampleClass
     /**
      * Function that sets the there member
      *
-     * @param  mixed $value some value
+     * @param  mixed $value Some value
      */
     public function setThere($value)
     {

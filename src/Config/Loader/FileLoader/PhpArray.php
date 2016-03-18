@@ -24,9 +24,10 @@ class PhpArray extends FileLoaderAbstract
     /**
      * Load a PHP file
      *
-     * @param  string $resource  File path to a PHP file that returns an array
+     * @param  string $resource File path to a PHP file that returns an array
      * @param  string|null $type This is not used
-     * @return array             array containing data from the PHP file
+     *
+     * @return array Array containing data from the PHP file
      */
     public function load($resource, $type = null)
     {
@@ -46,9 +47,10 @@ class PhpArray extends FileLoaderAbstract
      * /!\ This does not verify that the php file returns a valid array. An exception
      * will be thrown when it is loaded if that is not the case.
      *
-     * @param  string $resource filepath
-     * @param  string $type     not used
-     * @return boolean          whether or not the passed in resource is supported by this loader
+     * @param  string $resource Filepath
+     * @param  string $type Not used
+     *
+     * @return boolean Whether or not the passed in resource is supported by this loader
      */
     public function supports($resource, $type = null)
     {

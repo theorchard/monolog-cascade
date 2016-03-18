@@ -43,6 +43,7 @@ class FormatterLoaderTest extends \PHPUnit_Framework_TestCase
      *
      * @param  string $class Class name the handler applies to
      * @param  string $optionName Option name
+     *
      * @return \Closure Closure
      */
     private function getHandler($class, $optionName)
@@ -69,10 +70,10 @@ class FormatterLoaderTest extends \PHPUnit_Framework_TestCase
      * Tests that calling the given Closure will trigger a method call with the given param
      * in the given class
      *
-     * @param  string   $class      Class name
-     * @param  string   $methodName Method name
-     * @param  mixed    $methodArg  Parameter passed to the closure
-     * @param  \Closure $closure    Closure to call
+     * @param  string $class Class name
+     * @param  string $methodName Method name
+     * @param  mixed $methodArg Parameter passed to the closure
+     * @param  \Closure $closure Closure to call
      */
     private function doTestMethodCalledInHandler($class, $methodName, $methodArg, \Closure $closure)
     {
@@ -109,7 +110,7 @@ class FormatterLoaderTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(
-                '\Monolog\Formatter\LineFormatter',  // Class name
+                'Monolog\Formatter\LineFormatter',   // Class name
                 'includeStacktraces',                // Option name
                 true,                                // Option test value
                 'includeStacktraces'                 // Name of the method called by your handler
@@ -119,7 +120,12 @@ class FormatterLoaderTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test the extra option handlers
+     * @see doTestMethodCalledInHandler
      *
+     * @param  string $class Class name
+     * @param  string $optionName Option name
+     * @param  mixed $optionValue Option value
+     * @param  string $calledMethodName Expected called method name
      * @dataProvider handlerParamsProvider
      */
     public function testHandlers($class, $optionName, $optionValue, $calledMethodName)

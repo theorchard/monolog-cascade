@@ -222,7 +222,7 @@ You may want to have your Formatters and/or Handlers consume values other than v
 
     ```php
     self::$extraOptionHandlers = array(
-        '\Monolog\Formatter\LineFormatter' => array(
+        'Monolog\Formatter\LineFormatter' => array(
             'includeStacktraces' => function ($instance, $include) {
                 $instance->includeStacktraces($include);
             }

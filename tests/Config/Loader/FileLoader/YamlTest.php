@@ -12,7 +12,6 @@ namespace Cascade\Tests\Config\Loader\FileLoader;
 
 use Symfony\Component\Yaml\Yaml as YamlParser;
 
-use Cascade\Config\Loader\FileLoader\Yaml as YamlLoader;
 use Cascade\Tests\Fixtures;
 
 /**
@@ -22,6 +21,10 @@ use Cascade\Tests\Fixtures;
  */
 class YamlTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * Yaml loader mock builder
+     * @var \PHPUnit_Framework_MockObject_MockBuilder
+     */
     protected $yamlLoader = null;
 
     public function setUp()
@@ -86,6 +89,7 @@ class YamlTest extends \PHPUnit_Framework_TestCase
     /**
      * Test loading resources supported by the YamlLoader
      *
+     * @param mixed $invalidResource Invalid resource value
      * @dataProvider notStringDataProvider
      */
     public function testSupportsWithInvalidResource($invalidResource)

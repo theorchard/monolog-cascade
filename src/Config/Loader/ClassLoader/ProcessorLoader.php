@@ -19,6 +19,7 @@ use Cascade\Config\Loader\ClassLoader;
  * @see ClassLoader
  *
  * @author Kate Burdon <kburdon@tableau.com>
+ * @author Raphael Antonmattei <rantonmattei@theorchard.com>
  */
 class ProcessorLoader extends ClassLoader
 {
@@ -28,7 +29,7 @@ class ProcessorLoader extends ClassLoader
      * @see Monolog\Handler classes for handler options
      *
      * @param array $processorOptions Processor options
-     * @param \Monolog\Processor\ProcessorInterface[] $processors Array of processors to pick from
+     * @param Monolog\Processor\ProcessorInterface[] $processors Array of processors to pick from
      */
     public function __construct(array &$processorOptions, array $processors = array())
     {

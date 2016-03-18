@@ -26,15 +26,16 @@ class Yaml extends FileLoaderAbstract
      */
     public static $validExtensions = array(
         'yaml', // official extension
-        'yml' // but everybody uses that one
+        'yml'   // but everybody uses that one
     );
 
     /**
      * Load a Yaml string/file
      *
-     * @param  string $resource  Yaml string or file path to a Yaml file
-     * @param  string|null $type This is not used
-     * @return array             array containing data from the parse Yaml string or file
+     * @param  string $resource Yaml string or file path to a Yaml file
+     * @param  string|null $type Not used
+     *
+     * @return array Array containing data from the parse Yaml string or file
      */
     public function load($resource, $type = null)
     {
@@ -45,9 +46,10 @@ class Yaml extends FileLoaderAbstract
      * Return whether or not the resource passed in is supported by this loader
      * /!\ This does not validate Yaml content. The parser will raise an exception in that case
      *
-     * @param  string $resource plain string or filepath
-     * @param  string $type     not used
-     * @return boolean          whether or not the passed in resrouce is supported by this loader
+     * @param  string $resource Plain string or filepath
+     * @param  string $type Not used
+     *
+     * @return boolean Whether or not the passed in resrouce is supported by this loader
      */
     public function supports($resource, $type = null)
     {

@@ -10,14 +10,13 @@
  */
 namespace Cascade;
 
+use Monolog\Registry;
+
 use Cascade\Config\ConfigLoader;
 use Cascade\Config\Loader\ClassLoader\FormatterLoader;
 use Cascade\Config\Loader\ClassLoader\HandlerLoader;
 use Cascade\Config\Loader\ClassLoader\LoggerLoader;
 use Cascade\Config\Loader\ClassLoader\ProcessorLoader;
-use Monolog\Formatter\FormatterInterface;
-use Monolog\Handler\HandlerInterface;
-use Monolog\Registry;
 
 /**
  * Config class that takes a config resource (file, JSON, Yaml, etc.) and configure Loggers with
@@ -29,7 +28,7 @@ class Config
 {
     /**
      * Input from user. This is either a file path, a string or an array
-     * @var string | array
+     * @var string|array
      */
     protected $input = null;
 
@@ -41,13 +40,13 @@ class Config
 
     /**
      * Array of Formatter objects
-     * @var FormatterInterface[]
+     * @var Monolog\Formatter\FormatterInterface[]
      */
     protected $formatters = array();
 
     /**
      * Array of Handler objects
-     * @var HandlerInterface[]
+     * @var Monolog\Handler\HandlerInterface[]
      */
     protected $handlers = array();
 
@@ -59,7 +58,7 @@ class Config
 
     /**
      * Array of logger objects
-     * @var \Monolog\Logger[]
+     * @var Monolog\Logger[]
      */
     protected $loggers = array();
 
@@ -72,7 +71,7 @@ class Config
     /**
      * Instantiate a Config object
      *
-     * @param string | array $input user input
+     * @param string|array $input User input
      * @param ConfigLoader $loader Config loader object
      */
     public function __construct($input, ConfigLoader $loader)
@@ -126,7 +125,8 @@ class Config
 
     /**
      * Configure the formatters
-     * @param  array $formatters array of formatter options
+     *
+     * @param  array $formatters Array of formatter options
      */
     protected function configureFormatters(array $formatters = array())
     {
@@ -138,7 +138,8 @@ class Config
 
     /**
      * Configure the handlers
-     * @param  array $handlers array of handler options
+     *
+     * @param  array $handlers Array of handler options
      */
     protected function configureHandlers(array $handlers)
     {
@@ -151,7 +152,7 @@ class Config
     /**
      * Configure the processors
      *
-     * @param  array $processors array of processor options
+     * @param  array $processors Array of processor options
      */
     protected function configureProcessors(array $processors)
     {
@@ -164,7 +165,7 @@ class Config
     /**
      * Configure the loggers
      *
-     * @param  array $loggers array of logger options
+     * @param  array $loggers Array of logger options
      */
     protected function configureLoggers(array $loggers)
     {
