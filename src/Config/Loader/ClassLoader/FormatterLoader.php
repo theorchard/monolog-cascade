@@ -10,8 +10,9 @@
  */
 namespace Cascade\Config\Loader\ClassLoader;
 
-use Cascade\Config\Loader\ClassLoader;
 use Monolog\Formatter\LineFormatter;
+
+use Cascade\Config\Loader\ClassLoader;
 
 /**
  * Formatter Loader. Loads the Formatter options, validate them and instantiates
@@ -26,7 +27,7 @@ class FormatterLoader extends ClassLoader
     /**
      * Default formatter class to use if none is provided in the option array
      */
-    const DEFAULT_CLASS = '\Monolog\Formatter\LineFormatter';
+    const DEFAULT_CLASS = 'Monolog\Formatter\LineFormatter';
 
     /**
      * Constructor
@@ -61,7 +62,7 @@ class FormatterLoader extends ClassLoader
     public static function initExtraOptionsHandlers()
     {
         self::$extraOptionHandlers = array(
-            '\Monolog\Formatter\LineFormatter' => array(
+            'Monolog\Formatter\LineFormatter' => array(
                 'includeStacktraces' => function (LineFormatter $instance, $include) {
                     $instance->includeStacktraces($include);
                 }

@@ -14,22 +14,22 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Loader\DelegatingLoader;
 use Symfony\Component\Config\Loader\LoaderResolver;
 
-use Cascade\Config\Loader\PhpArray as ArrayLoader;
-use Cascade\Config\Loader\FileLoader\PhpArray as ArrayFromFileLoader;
 use Cascade\Config\Loader\FileLoader\Json as JsonLoader;
+use Cascade\Config\Loader\FileLoader\PhpArray as ArrayFromFileLoader;
 use Cascade\Config\Loader\FileLoader\Yaml as YamlLoader;
+use Cascade\Config\Loader\PhpArray as ArrayLoader;
 
 /**
  * Loader class that loads Yaml, JSON and array from various resources (file, php array, string)
+ * @see DelegatingLoader
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
- * @see    DelegatingLoader
  */
 class ConfigLoader extends DelegatingLoader
 {
     /**
      * Locator
-     * @var \Symfony\Component\Config\FileLocator
+     * @var FileLocator
      */
     protected $locator = null;
 
@@ -56,10 +56,10 @@ class ConfigLoader extends DelegatingLoader
     /**
      * Loads a configuration resource: file, array, string
      *
-     * @param mixed $resource resource to load
-     * @param mixed $type not used
+     * @param mixed $resource Resource to load
+     * @param string|null $type Not used
      *
-     * @return array array of config options
+     * @return array Array of config options
      */
     public function load($resource, $type = null)
     {

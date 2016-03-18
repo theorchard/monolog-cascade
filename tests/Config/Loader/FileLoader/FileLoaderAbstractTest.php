@@ -10,9 +10,9 @@
  */
 namespace Cascade\Tests\Config\Loader\FileLoader;
 
-use org\bovigo\vfs\vfsStream;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\FileLocatorInterface;
+use org\bovigo\vfs\vfsStream;
 
 use Cascade\Tests\Fixtures;
 
@@ -23,6 +23,10 @@ use Cascade\Tests\Fixtures;
  */
 class FileLoaderAbstractTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * Mock of extending Cascade\Config\Loader\FileLoader\FileLoaderAbstract
+     * @var \PHPUnit_Framework_MockObject_MockObject
+     */
     protected $mock = null;
 
     public function setUp()
@@ -73,6 +77,7 @@ class FileLoaderAbstractTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Data provider for testGetSectionOf
+     *
      * @return array array with original value, section and expected value
      */
     public function extensionsDataProvider()
@@ -89,6 +94,8 @@ class FileLoaderAbstractTest extends \PHPUnit_Framework_TestCase
     /**
      * Test validating the extension
      *
+     * @param boolean $expected Expected boolean value
+     * @param string filepath Filepath to validate
      * @dataProvider extensionsDataProvider
      */
     public function testValidateExtension($expected, $filepath)
@@ -102,6 +109,7 @@ class FileLoaderAbstractTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Data provider for testGetSectionOf
+     *
      * @return array array wit original value, section and expected value
      */
     public function arrayDataProvider()
@@ -131,9 +139,12 @@ class FileLoaderAbstractTest extends \PHPUnit_Framework_TestCase
     /**
      * Test the getSectionOf function
      *
+     * @param array $array Array of options
+     * @param string $section Section key
+     * @param array $expected Expected array for the given section
      * @dataProvider arrayDataProvider
      */
-    public function testGetSectionOf($array, $section, $expected)
+    public function testGetSectionOf(array $array, $section, array $expected)
     {
         $this->assertSame($expected, $this->mock->getSectionOf($array, $section));
     }

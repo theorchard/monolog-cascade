@@ -10,8 +10,6 @@
  */
 namespace Cascade\Tests;
 
-use Monolog\Handler\TestHandler;
-use Monolog\Logger;
 use Monolog\Registry;
 
 use Cascade\Config;

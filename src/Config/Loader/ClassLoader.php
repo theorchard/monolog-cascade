@@ -10,7 +10,6 @@
  */
 namespace Cascade\Config\Loader;
 
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 
 use Cascade\Config\Loader\ClassLoader\Resolver\ConstructorResolver;
@@ -29,6 +28,7 @@ use Cascade\Config\Loader\ClassLoader\Resolver\ExtraOptionsResolver;
  * For the latter you need to make sure there is a handler defined for that option
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
+ * @author Dom Morgan <dom@d3r.com>
  */
 class ClassLoader
 {
@@ -69,7 +69,7 @@ class ClassLoader
     /**
      * Constructor
      *
-     * @param array $options array of options
+     * @param array $options Array of options
      * The option array might look like:
      *     array(
      *         'class' => 'Some\Class',
@@ -101,8 +101,6 @@ class ClassLoader
     /**
      * Recursively loads objects into any of the rawOptions that represent
      * a class
-     *
-     * @author Dom Morgan <dom@d3r.com>
      */
     protected function loadChildClasses()
     {
@@ -120,8 +118,9 @@ class ClassLoader
     /**
      * Return option values indexed by name using camelCased keys
      *
-     * @param  array  $options array of options
-     * @return mixed[] array of options indexed by (camelCased) name
+     * @param  array  $options Array of options
+     *
+     * @return mixed[] Array of options indexed by (camelCased) name
      */
     public static function optionsToCamelCase(array $options)
     {
@@ -145,7 +144,7 @@ class ClassLoader
      * Extra options are those that are not in the contructor. The constructor arguments determine
      * what goes into which bucket
      *
-     * @return array array of constructorOptions and extraOptions
+     * @return array Array of constructorOptions and extraOptions
      */
     private function resolveOptions()
     {
@@ -178,7 +177,7 @@ class ClassLoader
      * Instantiate the reflected object using the parsed contructor args and set
      * extra options if any
      *
-     * @return mixed instance of the reflected object
+     * @return mixed Instance of the reflected object
      */
     public function load()
     {
@@ -196,7 +195,8 @@ class ClassLoader
      * Indicates whether or not an option is supported by the loader
      *
      * @param  string $extraOptionName Option name
-     * @return boolean whether or not an option is supported by the loader
+     *
+     * @return boolean Whether or not an option is supported by the loader
      */
     public function canHandle($extraOptionName)
     {
@@ -209,6 +209,7 @@ class ClassLoader
      * Get the corresponding handler for a given option
      *
      * @param  string $extraOptionName Option name
+     *
      * @return \Closure|null Corresponding Closure object or null if not found
      */
     public function getExtraOptionsHandler($extraOptionName)

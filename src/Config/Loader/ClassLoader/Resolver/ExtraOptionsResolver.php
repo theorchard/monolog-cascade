@@ -24,14 +24,12 @@ class ExtraOptionsResolver
 {
     /**
      * Reflection class for which you want to resolve extra options
-     *
      * @var \ReflectionClass
      */
     protected $reflected = null;
 
     /**
      * Registry of resolvers
-     *
      * @var OptionsResolver[]
      */
     private static $resolvers = array();
@@ -57,6 +55,7 @@ class ExtraOptionsResolver
 
     /**
      * Set the parameters we want to resolve against
+     *
      * @param array $params Associative array of extra parameters we want to resolve against
      */
     public function setParams(array $params = array())
@@ -88,7 +87,8 @@ class ExtraOptionsResolver
      * Generate a unique hash based on the keys of the extra params
      *
      * @param  array $params: array of parameters
-     * @return string unique MD5 hash
+     *
+     * @return string Unique MD5 hash
      */
     public static function generateParamsHashKey($params)
     {
@@ -133,6 +133,7 @@ class ExtraOptionsResolver
      * @param  array $options Array of option values
      * @param  ClassLoader|null $classLoader Optional class loader if you want to use custom
      * handlers to resolve the extra options
+     *
      * @return array Array of resolved options
      */
     public function resolve($options, ClassLoader $classLoader = null)

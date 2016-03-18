@@ -28,8 +28,9 @@ class Json extends FileLoaderAbstract
      * Load a JSON string/file
      *
      * @param  string $resource JSON string or file path to a JSON file
-     * @param  string|null $type This is not used.
-     * @return array array containing data from the parsed JSON string or file
+     * @param  string|null $type Not used.
+     *
+     * @return array Array containing data from the parsed JSON string or file
      */
     public function load($resource, $type = null)
     {
@@ -42,8 +43,9 @@ class Json extends FileLoaderAbstract
      * json_decode (which is much more expensive). If the json is invalid, it will throw an
      * exception when we actually load it.
      *
-     * @param  string  $string String to evaluate
-     * @return boolean whether or not the passed string is meant to be a JSON string
+     * @param  string $string String to evaluate
+     *
+     * @return boolean Whether or not the passed string is meant to be a JSON string
      */
     private function isJson($string)
     {
@@ -56,9 +58,10 @@ class Json extends FileLoaderAbstract
     /**
      * Return whether or not the passed in resrouce is supported by this loader
      *
-     * @param  string $resource plain string or filepath
-     * @param  string $type not used
-     * @return boolean whether or not the passed in resource is supported by this loader
+     * @param  string $resource Plain string or filepath
+     * @param  string $type Not used
+     *
+     * @return boolean Whether or not the passed in resource is supported by this loader
      */
     public function supports($resource, $type = null)
     {

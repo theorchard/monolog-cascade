@@ -11,7 +11,6 @@
 namespace Cascade\Tests\Config\Loader\ClassLoader\Resolver;
 
 use Cascade\Config\Loader\ClassLoader\Resolver\ExtraOptionsResolver;
-use Cascade\Tests\Fixtures\SampleClass;
 
 /**
  * Class ExtraOptionsResolverTest
@@ -22,14 +21,12 @@ class ExtraOptionsResolverTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Reflection class for which you want to resolve extra options
-     *
      * @var \ReflectionClass
      */
     protected $reflected = null;
 
     /**
      * ExtraOptions Resolver
-     *
      * @var ExtraOptionsResolver
      */
     protected $resolver = null;
@@ -97,9 +94,11 @@ class ExtraOptionsResolverTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Data provider for testResolveWithInvalidOptions
-     * @return array of arrays with expected resolved values and options used as input
      *
      * The order of the input options does not matter and is somewhat random. The resolution
+     * should reconcile those options and match them up with the closure param position
+     *
+     * @return array of arrays with expected resolved values and options used as input
      */
     public function optionsProvider()
     {
@@ -116,7 +115,6 @@ class ExtraOptionsResolverTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test resolving with valid options
-     *
      */
     public function testResolveWithCustomOptionHandler()
     {
@@ -140,9 +138,11 @@ class ExtraOptionsResolverTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Data provider for testResolveWithInvalidOptions
-     * @return array of arrays with expected resolved values and options used as input
      *
      * The order of the input options does not matter and is somewhat random. The resolution
+     * should reconcile those options and match them up with the closure param position
+     *
+     * @return array of arrays with expected resolved values and options used as input
      */
     public function invalidOptionsProvider()
     {
@@ -162,8 +162,9 @@ class ExtraOptionsResolverTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test resolving with invalid options
+     * Test resolving with invalid options. It should throw an exception.
      *
+     * @param  array $invalidOptions Array of invalid options
      * @dataProvider invalidOptionsProvider
      * @expectedException Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException
      */

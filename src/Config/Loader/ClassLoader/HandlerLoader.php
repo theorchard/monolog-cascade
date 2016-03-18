@@ -11,10 +11,10 @@
 namespace Cascade\Config\Loader\ClassLoader;
 
 use Monolog\Formatter\FormatterInterface;
-
-use Cascade\Config\Loader\ClassLoader;
 use Monolog\Handler\HandlerInterface;
 use Monolog\Handler\LogglyHandler;
+
+use Cascade\Config\Loader\ClassLoader;
 
 /**
  * Handler Loader. Loads the Handler options, validate them and instantiates
@@ -29,7 +29,7 @@ class HandlerLoader extends ClassLoader
     /**
      * Default handler class to use if none is provided in the option array
      */
-    const DEFAULT_CLASS = '\Monolog\Handler\StreamHandler';
+    const DEFAULT_CLASS = 'Monolog\Handler\StreamHandler';
 
     /**
      * Constructor
@@ -37,7 +37,7 @@ class HandlerLoader extends ClassLoader
      * @see Monolog\Handler classes for handler options
      *
      * @param array $handlerOptions Handler options
-     * @param \Monolog\Formatter\FormatterInterface[] $formatters Array of formatter to pick from
+     * @param FormatterInterface[] $formatters Array of formatter to pick from
      * @param callable[] $processors Array of processors to pick from
      * @param callable[] $handlers Array of handlers to pick from
      */
@@ -65,7 +65,7 @@ class HandlerLoader extends ClassLoader
      * @throws \InvalidArgumentException
      *
      * @param  array &$handlerOptions Handler options
-     * @param  \Monolog\Formatter\FormatterInterface[] $formatters Array of formatter to pick from
+     * @param  FormatterInterface[] $formatters Array of formatter to pick from
      */
     private function populateFormatters(array &$handlerOptions, array $formatters)
     {

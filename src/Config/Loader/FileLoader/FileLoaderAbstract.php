@@ -23,10 +23,12 @@ abstract class FileLoaderAbstract extends FileLoader
 
     /**
      * Read from a file or string
+     *
      * @throws \RuntimeException if the file is not readable
      *
      * @param  string $input Filepath or string
-     * @return string return a string
+     *
+     * @return string Return a string from read file or directly from $input
      */
     public function readFrom($input)
     {
@@ -48,7 +50,8 @@ abstract class FileLoaderAbstract extends FileLoader
      * Test if a given resource is a file name or a file path
      *
      * @param  string $resource Plain string or file path
-     * @return boolean whether or not the resource is a file
+     *
+     * @return boolean Whether or not the resource is a file
      */
     public function isFile($resource)
     {
@@ -59,7 +62,8 @@ abstract class FileLoaderAbstract extends FileLoader
      * Validate a file extension against a list of provided valid extensions
      *
      * @param  string $filepath file path of the file we want to check
-     * @return boolean whether or no the extension is valid
+     *
+     * @return boolean Whether or not the extension is valid
      */
     public function validateExtension($filepath)
     {
@@ -72,7 +76,7 @@ abstract class FileLoaderAbstract extends FileLoader
      * @param  array $array Array we want the section from
      * @param  string $section Section name (key)
      *
-     * @return array | mixed   return the section of an array or just a value
+     * @return array|mixed Return the section of an array or just a value
      */
     public function getSectionOf($array, $section = '')
     {

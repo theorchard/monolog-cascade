@@ -10,8 +10,9 @@
  */
 namespace Cascade\Tests\Config\Loader\ClassLoader;
 
-use Cascade\Config\Loader\ClassLoader\ProcessorLoader;
 use Monolog\Processor\WebProcessor;
+
+use Cascade\Config\Loader\ClassLoader\ProcessorLoader;
 
 /**
  * Class ProcessorLoaderTest
@@ -23,7 +24,7 @@ class ProcessorLoaderTest extends \PHPUnit_Framework_TestCase
     public function testProcessorLoader()
     {
         $options = array(
-            'class' => '\Monolog\Processor\WebProcessor'
+            'class' => 'Monolog\Processor\WebProcessor'
         );
         $processors = array(new WebProcessor());
         $loader = new ProcessorLoader($options, $processors);

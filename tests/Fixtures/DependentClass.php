@@ -11,36 +11,35 @@
 namespace Cascade\Tests\Fixtures;
 
 /**
- * Class SampleClass
+ * Class DependentClass
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
+ * @author Dom Morgan <dom@d3r.com>
  */
 class DependentClass
 {
     /**
      * An object dependency
-     * @var Cascade\Tests\Fixtures\SampleClass
+     * @var SampleClass
      */
     private $dependency;
 
     /**
      * Constructor
      *
-     * @param mixed $mandatory Some mandatory param
-     * @param string $optionalA Some optional param
+     * @param SampleClass $dependency Some sample object
      */
-    public function __construct(
-        SampleClass $dependency
-    ) {
+    public function __construct(SampleClass $dependency)
+    {
         $this->setDependency($dependency);
     }
 
     /**
      * Set the object dependency
      *
-     * @param Cascade\Tests\Fixtures\SampleClass $dependency Some value
+     * @param SampleClass $dependency Some sample object
      */
-    public function setDependency($dependency)
+    public function setDependency(SampleClass $dependency)
     {
         $this->dependency = $dependency;
     }
