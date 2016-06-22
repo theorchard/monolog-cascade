@@ -11,14 +11,21 @@
             "homepage": "https://github.com/rantonmattei"
         }
     ],
+    "minimum-stability": "dev",
     "homepage": "https://github.com/theorchard/monolog-cascade",
+    "repositories": [
+        {
+            "url": "https://github.com/Nanigans/monolog.git",
+            "type": "git"
+        }
+    ],
     "require": {
         "php": ">=5.3.9",
         "symfony/config": "~2.7",
         "symfony/options-resolver": "~2.7",
         "symfony/serializer": "~2.7",
         "symfony/yaml": "~2.7",
-        "monolog/monolog": "~1.13"
+        "nanigans/monolog": "1.x-dev"
     },
     "autoload": {
         "psr-4": {
