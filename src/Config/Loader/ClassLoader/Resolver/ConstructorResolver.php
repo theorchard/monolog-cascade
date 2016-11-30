@@ -65,7 +65,7 @@ class ConstructorResolver
         if (!is_null($constructor)) {
             // Index parameters by their names
             foreach ($constructor->getParameters() as $param) {
-            	$name = Util::snakeToCamelCase($param->getName());
+                $name = Util::snakeToCamelCase($param->getName());
                 $this->constructorArgs[$name] = $param;
             }
         }
