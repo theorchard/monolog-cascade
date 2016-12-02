@@ -16,7 +16,6 @@
         "php": ">=5.3.9",
         "symfony/config": "~2.7",
         "symfony/options-resolver": "~2.7",
-        "symfony/serializer": "~2.7",
         "symfony/yaml": "~2.7",
         "monolog/monolog": "~1.13"
     },

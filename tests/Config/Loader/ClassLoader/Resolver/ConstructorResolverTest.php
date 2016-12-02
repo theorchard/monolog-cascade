@@ -10,8 +10,7 @@
  */
 namespace Cascade\Tests\Config\Loader\ClassLoader\Resolver;
 
-use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
-
+use Cascade\Util;
 use Cascade\Config\Loader\ClassLoader\Resolver\ConstructorResolver;
 
 /**
@@ -80,10 +79,9 @@ class ConstructorResolverTest extends \PHPUnit_Framework_TestCase
     public function testInitConstructorArgs()
     {
         $expectedConstructorArgs = array();
-        $nameConverter = new CamelCaseToSnakeCaseNameConverter();
 
         foreach ($this->getConstructorArgs() as $param) {
-            $expectedConstructorArgs[$nameConverter->denormalize($param->getName())] = $param;
+            $expectedConstructorArgs[Util::snakeToCamelCase($param->getName())] = $param;
         }
         $this->assertEquals($expectedConstructorArgs, $this->resolver->getConstructorArgs());
     }

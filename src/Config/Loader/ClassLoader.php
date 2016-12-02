@@ -10,10 +10,9 @@
  */
 namespace Cascade\Config\Loader;
 
-use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
-
 use Cascade\Config\Loader\ClassLoader\Resolver\ConstructorResolver;
 use Cascade\Config\Loader\ClassLoader\Resolver\ExtraOptionsResolver;
+use Cascade\Util;
 
 /**
  * Class Loader. Instantiate an object given a set of options. The option might look like:
@@ -127,10 +126,8 @@ class ClassLoader
         $optionsByName = array();
 
         if (count($options)) {
-            $nameConverter = new CamelCaseToSnakeCaseNameConverter();
-
             foreach ($options as $name => $value) {
-                $optionsByName[$nameConverter->denormalize($name)] = $value;
+                $optionsByName[Util::snakeToCamelCase($name)] = $value;
             }
         }
 

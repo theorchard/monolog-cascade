@@ -10,8 +10,8 @@
  */
 namespace Cascade\Config\Loader\ClassLoader\Resolver;
 
+use Cascade\Util;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 
 /**
  * Constructor Resolver. Pull args from the contructor and set up an option
@@ -61,12 +61,12 @@ class ConstructorResolver
     public function initConstructorArgs()
     {
         $constructor = $this->reflected->getConstructor();
-        $nameConverter = new CamelCaseToSnakeCaseNameConverter();
 
         if (!is_null($constructor)) {
             // Index parameters by their names
             foreach ($constructor->getParameters() as $param) {
-                $this->constructorArgs[$nameConverter->denormalize($param->getName())] = $param;
+                $name = Util::snakeToCamelCase($param->getName());
+                $this->constructorArgs[$name] = $param;
             }
         }
     }
