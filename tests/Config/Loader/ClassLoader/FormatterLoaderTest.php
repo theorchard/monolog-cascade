@@ -43,8 +43,8 @@ class FormatterLoaderTest extends \PHPUnit_Framework_TestCase
      *
      * @param  string $class Class name the handler applies to
      * @param  string $optionName Option name
-     *
      * @return \Closure Closure
+     * @throws \Exception
      */
     private function getHandler($class, $optionName)
     {

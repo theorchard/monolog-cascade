@@ -95,7 +95,7 @@ class FileLoaderAbstractTest extends \PHPUnit_Framework_TestCase
      * Test validating the extension
      *
      * @param boolean $expected Expected boolean value
-     * @param string filepath Filepath to validate
+     * @param string $filepath Filepath to validate
      * @dataProvider extensionsDataProvider
      */
     public function testValidateExtension($expected, $filepath)
@@ -152,7 +152,7 @@ class FileLoaderAbstractTest extends \PHPUnit_Framework_TestCase
     /**
      * Test loading an invalid file
      *
-     * @expectedException RuntimeException
+     * @expectedException \RuntimeException
      */
     public function testloadFileFromInvalidFile()
     {

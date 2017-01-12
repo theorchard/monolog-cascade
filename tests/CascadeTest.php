@@ -14,7 +14,6 @@ use Monolog\Logger;
 use Monolog\Registry;
 
 use Cascade\Cascade;
-use Cascade\Tests\Fixtures;
 
 /**
  * Class CascadeTest
@@ -49,17 +48,38 @@ class CascadeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException InvalidArgumentException
+     * @expectedException \InvalidArgumentException
      */
     public function testRegistryWithInvalidName()
     {
-        $logger = Cascade::getLogger(null);
+        Cascade::getLogger(null);
     }
 
     public function testFileConfig()
     {
+        $filePath = Fixtures::getPhpArrayConfigFile();
+        Cascade::fileConfig($filePath);
+        $this->assertInstanceOf('Cascade\Config', Cascade::getConfig());
+    }
+
+    public function testLoadConfigFromArray()
+    {
         $options = Fixtures::getPhpArrayConfig();
-        Cascade::fileConfig($options);
+        Cascade::loadConfigFromArray($options);
+        $this->assertInstanceOf('Cascade\Config', Cascade::getConfig());
+    }
+
+    public function testLoadConfigFromStringWithJson()
+    {
+        $jsonConfig = Fixtures::getJsonConfig();
+        Cascade::loadConfigFromString($jsonConfig);
+        $this->assertInstanceOf('Cascade\Config', Cascade::getConfig());
+    }
+
+    public function testLoadConfigFromStringWithYaml()
+    {
+        $yamlConfig = Fixtures::getYamlConfig();
+        Cascade::loadConfigFromString($yamlConfig);
         $this->assertInstanceOf('Cascade\Config', Cascade::getConfig());
     }
 }

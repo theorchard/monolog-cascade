@@ -98,7 +98,7 @@ class ExtraOptionsResolver
     /**
      * Configure options for the provided OptionResolver to match extra params requirements
      *
-     * @param  OptionsResolver $optionsResolver OptionResolver to configure
+     * @param  OptionsResolver $resolver OptionResolver to configure
      * @param  ClassLoader|null $classLoader Optional class loader if you want to use custom
      * handlers for some of the extra options
      */
