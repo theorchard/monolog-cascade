@@ -260,3 +260,8 @@ What's next?
 Symfony Users
 -------------
 You may want to use [MonologBundle](https://github.com/symfony/MonologBundle) as it integrates directly with your favorite framework.
+
+
+Under The Hood
+--------------
+Here is a [Medium post](https://medium.com/orchard-technology/enhancing-monolog-699efff1051d#.dw6qu1c2p) if you want to know more about the implementation.
