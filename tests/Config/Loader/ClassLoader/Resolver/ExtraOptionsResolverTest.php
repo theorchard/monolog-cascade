@@ -12,6 +12,8 @@ namespace Cascade\Tests\Config\Loader\ClassLoader\Resolver;
 
 use Cascade\Config\Loader\ClassLoader\Resolver\ExtraOptionsResolver;
 
+use Symfony;
+
 /**
  * Class ExtraOptionsResolverTest
  *

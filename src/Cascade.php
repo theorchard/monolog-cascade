@@ -10,16 +10,16 @@
  */
 namespace Cascade;
 
+use Monolog\Handler\HandlerInterface;
 use Monolog\Logger;
 use Monolog\Registry;
 
-use Cascade\Config;
 use Cascade\Config\ConfigLoader;
 
 /**
  * Module class that manages Monolog Logger object
- * @see Monolog\Logger
- * @see Monolog\Registry
+ * @see Logger
+ * @see Registry
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
  */
@@ -34,12 +34,12 @@ class Cascade
 
     /**
      * Create a new Logger object and push it to the registry
-     * @see Monolog\Logger::__construct
+     * @see Logger::__construct
      *
      * @throws \InvalidArgumentException if no name is given
      *
      * @param string $name The logging channel
-     * @param Monolog\Handler\HandlerInterface[] $handlers Optional stack of handlers, the first
+     * @param HandlerInterface[] $handlers Optional stack of handlers, the first
      * one in the array is called first, etc.
      * @param callable[] $processors Optional array of processors
      *
@@ -90,7 +90,7 @@ class Cascade
     /**
      * Return the config options
      *
-     * @return array Array with configuration options
+     * @return Config Array with configuration options
      */
     public static function getConfig()
     {

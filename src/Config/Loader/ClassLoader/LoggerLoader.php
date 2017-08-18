@@ -11,7 +11,8 @@
 namespace Cascade\Config\Loader\ClassLoader;
 
 use Cascade\Cascade;
-use Cascade\Config\Loader\ClassLoader;
+
+use Monolog;
 
 /**
  * Logger Loader. Instantiate a Logger and set passed in handlers and processors if any

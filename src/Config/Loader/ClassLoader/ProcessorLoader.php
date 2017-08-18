@@ -12,6 +12,8 @@ namespace Cascade\Config\Loader\ClassLoader;
 
 use Cascade\Config\Loader\ClassLoader;
 
+use Monolog;
+
 /**
  * Processor Loader. Loads the Processor options, validate them and instantiates
  * a Processor object (implementing Monolog\Processor\ProcessorInterface) with all

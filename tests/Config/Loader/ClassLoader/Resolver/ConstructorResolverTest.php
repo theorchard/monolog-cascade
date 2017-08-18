@@ -13,6 +13,8 @@ namespace Cascade\Tests\Config\Loader\ClassLoader\Resolver;
 use Cascade\Util;
 use Cascade\Config\Loader\ClassLoader\Resolver\ConstructorResolver;
 
+use Symfony;
+
 /**
  * Class ConstructorResolverTest
  *
@@ -55,7 +57,7 @@ class ConstructorResolverTest extends \PHPUnit_Framework_TestCase
     /**
      * Return the contructor args of the reflected class
      *
-     * @return ReflectionParameter[] array of params
+     * @return \ReflectionParameter[] array of params
      */
     protected function getConstructorArgs()
     {
