@@ -57,8 +57,29 @@ class CascadeTest extends \PHPUnit_Framework_TestCase
 
     public function testFileConfig()
     {
+        $filePath = Fixtures::getPhpArrayConfigFile();
+        Cascade::fileConfig($filePath);
+        $this->assertInstanceOf('Cascade\Config', Cascade::getConfig());
+    }
+
+    public function testLoadConfigFromArray()
+    {
         $options = Fixtures::getPhpArrayConfig();
-        Cascade::fileConfig($options);
+        Cascade::loadConfigFromArray($options);
+        $this->assertInstanceOf('Cascade\Config', Cascade::getConfig());
+    }
+
+    public function testLoadConfigFromStringWithJson()
+    {
+        $jsonConfig = Fixtures::getJsonConfig();
+        Cascade::loadConfigFromString($jsonConfig);
+        $this->assertInstanceOf('Cascade\Config', Cascade::getConfig());
+    }
+
+    public function testLoadConfigFromStringWithYaml()
+    {
+        $yamlConfig = Fixtures::getYamlConfig();
+        Cascade::loadConfigFromString($yamlConfig);
         $this->assertInstanceOf('Cascade\Config', Cascade::getConfig());
     }
 }
