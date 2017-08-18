@@ -90,7 +90,7 @@ class Cascade
     /**
      * Return the config options
      *
-     * @return array Array with configuration options
+     * @return Config Array with configuration options
      */
     public static function getConfig()
     {
@@ -98,14 +98,36 @@ class Cascade
     }
 
     /**
-     * Load configuration options from a file or a string
+     * Load configuration options from a file, a JSON or Yaml string or an array.
      *
-     * @param string $resource Path to config file or string or array
+     * @param string|array $resource Path to config file or configuration as string or array
      */
     public static function fileConfig($resource)
     {
         self::$config = new Config($resource, new ConfigLoader());
         self::$config->load();
         self::$config->configure();
+    }
+
+    /**
+     * Load configuration options from a JSON or Yaml string. Alias of fileConfig.
+     * @see fileConfig
+     *
+     * @param string $configString Configuration in string form
+     */
+    public static function loadConfigFromString($configString)
+    {
+        self::fileConfig($configString);
+    }
+
+    /**
+     * Load configuration options from an array. Alias of fileConfig.
+     * @see fileConfig
+     *
+     * @param array $configArray Configuration in array form
+     */
+    public static function loadConfigFromArray($configArray)
+    {
+        self::fileConfig($configArray);
     }
 }

@@ -43,6 +43,16 @@ class Fixtures
     }
 
     /**
+     * Return a config as Yaml
+     *
+     * @return string Yaml config
+     */
+    public static function getYamlConfig()
+    {
+        return file_get_contents(self::fixtureDir().'/fixture_config.yml');
+    }
+
+    /**
      * Return the fixture sample Yaml file
      *
      * @return string Path to a sample yaml file
@@ -74,6 +84,16 @@ class Fixtures
     public static function getJsonConfigFile()
     {
         return self::fixtureDir().'/fixture_config.json';
+    }
+
+    /**
+     * Return a config as JSON
+     *
+     * @return string JSON config
+     */
+    public static function getJsonConfig()
+    {
+        return file_get_contents(self::fixtureDir().'/fixture_config.json');
     }
 
     /**
@@ -109,6 +129,16 @@ class Fixtures
     public static function getSampleString()
     {
         return " some string with new \n\n lines and white spaces \n\n";
+    }
+
+    /**
+     * Return the fixture PHP array config file
+     *
+     * @return string Path to PHP array config file
+     */
+    public static function getPhpArrayConfigFile()
+    {
+        return self::fixtureDir().'/fixture_config.php';
     }
 
     /**
