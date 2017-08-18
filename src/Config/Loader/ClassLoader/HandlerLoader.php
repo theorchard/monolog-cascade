@@ -34,7 +34,7 @@ class HandlerLoader extends ClassLoader
     /**
      * Constructor
      * @see ClassLoader::__construct
-     * @see Monolog\Handler classes for handler options
+     * @see \Monolog\Handler classes for handler options
      *
      * @param array $handlerOptions Handler options
      * @param FormatterInterface[] $formatters Array of formatter to pick from

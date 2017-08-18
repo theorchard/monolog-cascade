@@ -10,7 +10,7 @@
  */
 namespace Cascade;
 
-use Monolog\Registry;
+use Monolog;
 
 use Cascade\Config\ConfigLoader;
 use Cascade\Config\Loader\ClassLoader\FormatterLoader;
@@ -99,7 +99,7 @@ class Config
         }
 
         if ($this->options['disable_existing_loggers']) {
-            Registry::clear();
+            Monolog\Registry::clear();
         }
 
         if (isset($this->options['formatters'])) {

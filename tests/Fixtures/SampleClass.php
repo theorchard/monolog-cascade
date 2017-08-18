@@ -65,6 +65,7 @@ class SampleClass
      * @param mixed $mandatory Some mandatory param
      * @param string $optionalA Some optional param
      * @param string $optionalB Some other optional param
+     * @param string $optional_snake Some optional snake param
      */
     public function __construct(
         $mandatory,

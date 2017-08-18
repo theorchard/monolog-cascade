@@ -54,7 +54,7 @@ class HandlerLoaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException InvalidArgumentException
+     * @expectedException \InvalidArgumentException
      */
     public function testHandlerLoaderWithInvalidFormatter()
     {
@@ -67,7 +67,7 @@ class HandlerLoaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException InvalidArgumentException
+     * @expectedException \InvalidArgumentException
      */
     public function testHandlerLoaderWithInvalidProcessor()
     {
@@ -84,7 +84,7 @@ class HandlerLoaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException InvalidArgumentException
+     * @expectedException \InvalidArgumentException
      */
     public function testHandlerLoaderWithInvalidHandler()
     {
@@ -102,7 +102,7 @@ class HandlerLoaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException InvalidArgumentException
+     * @expectedException \InvalidArgumentException
      */
     public function testHandlerLoaderWithInvalidHandlers()
     {
@@ -128,8 +128,8 @@ class HandlerLoaderTest extends \PHPUnit_Framework_TestCase
      *
      * @param  string $class Class name the handler applies to
      * @param  string $optionName Option name
-     *
      * @return \Closure Closure
+     * @throws \Exception
      */
     private function getHandler($class, $optionName)
     {
