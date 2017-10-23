@@ -10,6 +10,7 @@
  */
 namespace Cascade\Tests\Config\Loader\FileLoader;
 
+use Cascade\Tests\TestCase;
 use Cascade\Tests\Fixtures;
 
 /**
@@ -17,7 +18,7 @@ use Cascade\Tests\Fixtures;
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
  */
-class JsonTest extends \PHPUnit_Framework_TestCase
+class JsonTest extends TestCase
 {
     /**
      * JSON loader mock builder

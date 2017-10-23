@@ -20,7 +20,7 @@ use Cascade\Cascade;
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
  */
-class CascadeTest extends \PHPUnit_Framework_TestCase
+class CascadeTest extends TestCase
 {
     public function teardown()
     {

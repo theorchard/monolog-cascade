@@ -10,6 +10,7 @@
  */
 namespace Cascade\Tests\Config\Loader\ClassLoader;
 
+use Cascade\Tests\TestCase;
 use Cascade\Config\Loader\ClassLoader\FormatterLoader;
 
 /**
@@ -17,7 +18,7 @@ use Cascade\Config\Loader\ClassLoader\FormatterLoader;
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
  */
-class FormatterLoaderTest extends \PHPUnit_Framework_TestCase
+class FormatterLoaderTest extends TestCase
 {
     /**
      * Set up function

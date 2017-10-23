@@ -9,12 +9,13 @@ namespace Cascade\Tests\Config\Loader\FileLoader;
 
 use Symfony\Component\Config\FileLocator;
 
+use Cascade\Tests\TestCase;
 use Cascade\Config\Loader\FileLoader\PhpArray as ArrayLoader;
 
 /**
  * Class PhpArrayTest
  */
-class PhpArrayTest extends \PHPUnit_Framework_TestCase
+class PhpArrayTest extends TestCase
 {
     /**
      * @var ArrayLoader

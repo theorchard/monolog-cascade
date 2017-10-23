@@ -14,6 +14,7 @@ use Monolog\Handler\TestHandler;
 use Monolog\Logger;
 use Monolog\Registry;
 
+use Cascade\Tests\TestCase;
 use Cascade\Config\Loader\ClassLoader\LoggerLoader;
 
 /**
@@ -21,7 +22,7 @@ use Cascade\Config\Loader\ClassLoader\LoggerLoader;
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
  */
-class LoggerLoaderTest extends \PHPUnit_Framework_TestCase
+class LoggerLoaderTest extends TestCase
 {
     /**
      * Tear down function

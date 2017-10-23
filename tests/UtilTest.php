@@ -9,7 +9,7 @@ use Cascade\Util;
  *
  * @author Deniz Dogan <deniz@dogan.se>
  */
-class UtilTest extends \PHPUnit_Framework_TestCase
+class UtilTest extends TestCase
 {
     public function testSnakeToCamelCase()
     {

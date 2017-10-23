@@ -12,6 +12,7 @@ namespace Cascade\Tests\Config\Loader\FileLoader;
 
 use Symfony\Component\Yaml\Yaml as YamlParser;
 
+use Cascade\Tests\TestCase;
 use Cascade\Tests\Fixtures;
 
 /**
@@ -19,7 +20,7 @@ use Cascade\Tests\Fixtures;
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
  */
-class YamlTest extends \PHPUnit_Framework_TestCase
+class YamlTest extends TestCase
 {
     /**
      * Yaml loader mock builder

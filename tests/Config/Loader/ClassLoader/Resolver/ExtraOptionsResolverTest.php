@@ -11,6 +11,7 @@
 namespace Cascade\Tests\Config\Loader\ClassLoader\Resolver;
 
 use Cascade\Config\Loader\ClassLoader\Resolver\ExtraOptionsResolver;
+use Cascade\Tests\TestCase;
 
 use Symfony;
 
@@ -19,7 +20,7 @@ use Symfony;
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
  */
-class ExtraOptionsResolverTest extends \PHPUnit_Framework_TestCase
+class ExtraOptionsResolverTest extends TestCase
 {
     /**
      * Reflection class for which you want to resolve extra options

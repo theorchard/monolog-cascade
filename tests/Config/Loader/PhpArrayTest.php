@@ -10,6 +10,7 @@
  */
 namespace Cascade\Tests\Config\Loader;
 
+use Cascade\Tests\TestCase;
 use Cascade\Config\Loader\PhpArray as ArrayLoader;
 use Cascade\Tests\Fixtures;
 
@@ -18,7 +19,7 @@ use Cascade\Tests\Fixtures;
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
  */
-class PhpArrayTest extends \PHPUnit_Framework_TestCase
+class PhpArrayTest extends TestCase
 {
     /**
      * Array loader object

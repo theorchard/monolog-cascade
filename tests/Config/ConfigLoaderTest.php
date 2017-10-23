@@ -10,6 +10,7 @@
  */
 namespace Cascade\Tests\Config;
 
+use Cascade\Tests\TestCase;
 use Cascade\Config\ConfigLoader;
 use Cascade\Tests\Fixtures;
 
@@ -18,7 +19,7 @@ use Cascade\Tests\Fixtures;
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
  */
-class ConfigLoaderTest extends \PHPUnit_Framework_TestCase
+class ConfigLoaderTest extends TestCase
 {
     /**
      * Loader to test against

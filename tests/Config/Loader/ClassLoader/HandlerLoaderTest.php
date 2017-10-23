@@ -12,6 +12,7 @@ namespace Cascade\Tests\Config\Loader\ClassLoader;
 
 use Monolog\Formatter\LineFormatter;
 
+use Cascade\Tests\TestCase;
 use Cascade\Config\Loader\ClassLoader\HandlerLoader;
 
 /**
@@ -19,7 +20,7 @@ use Cascade\Config\Loader\ClassLoader\HandlerLoader;
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
  */
-class HandlerLoaderTest extends \PHPUnit_Framework_TestCase
+class HandlerLoaderTest extends TestCase
 {
     public function testHandlerLoader()
     {
