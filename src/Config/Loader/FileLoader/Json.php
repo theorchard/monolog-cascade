@@ -56,7 +56,7 @@ class Json extends FileLoaderAbstract
     }
 
     /**
-     * Return whether or not the passed in resrouce is supported by this loader
+     * Return whether or not the passed in resource is supported by this loader
      *
      * @param  string $resource Plain string or filepath
      * @param  string $type Not used
