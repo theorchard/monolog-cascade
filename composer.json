@@ -14,10 +14,10 @@
     "homepage": "https://github.com/theorchard/monolog-cascade",
     "require": {
         "php": ">=5.3.9",
-        "symfony/config": "~2.7|~3.0",
-        "symfony/options-resolver": "~2.7|~3.0",
-        "symfony/serializer": "~2.7|~3.0",
-        "symfony/yaml": "~2.7|~3.0",
+        "symfony/config": "~2.7|~3.0|~4.0",
+        "symfony/options-resolver": "~2.7|~3.0|~4.0",
+        "symfony/serializer": "~2.7|~3.0|~4.0",
+        "symfony/yaml": "~2.7|~3.0|~4.0",
         "monolog/monolog": "~1.13"
     },
     "autoload": {
