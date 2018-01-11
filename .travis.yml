@@ -10,6 +10,7 @@ env:
 matrix:
     include:
         - php: 5.3
+          dist: precise
         - php: 5.4
           env: COVERALLS=1 PHPCS=1
         - php: 5.5
