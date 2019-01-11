@@ -40,8 +40,8 @@ Cascade::fileConfig($config);
 
 Then just use your logger as shown below
 ```php
-Cascade::getLogger('myApp')->info('Well, that works!');
-Cascade::getLogger('myApp')->error('Maybe not...');
+Cascade::getLogger('myLogger')->info('Well, that works!');
+Cascade::getLogger('myLogger')->error('Maybe not...');
 ```
 
 Configuring your loggers
