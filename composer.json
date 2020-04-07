@@ -31,10 +31,10 @@
         }
     },
     "require-dev": {
-        "mikey179/vfsStream": "^1.6",
+        "mikey179/vfsstream": "^1.6",
         "phpunit/phpcov": "^2.0",
         "phpunit/phpunit": "^4.8",
-        "satooshi/php-coveralls": "^1.0",
+        "php-coveralls/php-coveralls": "^1.0",
         "squizlabs/php_codesniffer": "^2.5"
     },
     "prefer-stable": true,
