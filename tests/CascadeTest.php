@@ -82,4 +82,12 @@ class CascadeTest extends \PHPUnit_Framework_TestCase
         Cascade::loadConfigFromString($yamlConfig);
         $this->assertInstanceOf('Cascade\Config', Cascade::getConfig());
     }
+
+    public function testHasLogger()
+    {
+        // implicitly create logger "existing"
+        Cascade::logger('existing');
+        $this->assertFalse(Cascade::hasLogger('not_existing'));
+        $this->assertTrue(Cascade::hasLogger('existing'));
+    }
 }
