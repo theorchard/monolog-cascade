@@ -33,9 +33,8 @@ class FileLoaderAbstractTest extends \PHPUnit_Framework_TestCase
     {
         parent::setUp();
 
-        $fileLocatorMock = $this->getMock(
-            'Symfony\Component\Config\FileLocatorInterface'
-        );
+        $fileLocatorMock = $this->getMockBuilder('Symfony\Component\Config\FileLocatorInterface')
+                                ->getMock();
 
         $this->mock = $this->getMockForAbstractClass(
             'Cascade\Config\Loader\FileLoader\FileLoaderAbstract',
