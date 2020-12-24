@@ -244,8 +244,15 @@ class HandlerLoaderTest extends \PHPUnit_Framework_TestCase
     {
         $options = array();
 
-        $mockProcessor1 = '123';
-        $mockProcessor2 = '456';
+        $mockProcessor1 = function($record) {
+            $record['extra']['dummy'] = 'Hello world 1!';
+            return $record;
+        };
+        $mockProcessor2 =  function($record) {
+            $record['extra']['dummy'] = 'Hello world 2!';
+            return $record;
+        };
+
         $processorsArray = array($mockProcessor1, $mockProcessor2);
 
         // Setup mock and expectations
