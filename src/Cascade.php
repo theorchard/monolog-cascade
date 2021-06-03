@@ -88,6 +88,18 @@ class Cascade
     }
 
     /**
+     * Checks if a logger with given name already exists.
+     *
+     * @param string $name Name of the requested Logger instance
+     *
+     * @return bool true - Logger already exists; false - Logger does not exist
+     */
+    public static function hasLogger($name)
+    {
+        return Registry::hasLogger($name);
+    }
+
+    /**
      * Return the config options
      *
      * @return Config Array with configuration options
