@@ -33,9 +33,8 @@ class YamlTest extends TestCase
     {
         parent::setUp();
 
-        $fileLocatorMock = $this->getMock(
-            'Symfony\Component\Config\FileLocatorInterface'
-        );
+        $fileLocatorMock = $this->getMockBuilder('Symfony\Component\Config\FileLocatorInterface')
+                                ->getMock();
 
         $this->yamlLoader = $this->getMockBuilder(
             'Cascade\Config\Loader\FileLoader\Yaml'
