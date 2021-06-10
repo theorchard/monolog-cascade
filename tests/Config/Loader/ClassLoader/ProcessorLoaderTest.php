@@ -13,13 +13,14 @@ namespace Cascade\Tests\Config\Loader\ClassLoader;
 use Monolog\Processor\WebProcessor;
 
 use Cascade\Config\Loader\ClassLoader\ProcessorLoader;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class ProcessorLoaderTest
  *
  * @author Kate Burdon <kburdon@tableau.com>
  */
-class ProcessorLoaderTest extends \PHPUnit_Framework_TestCase
+class ProcessorLoaderTest extends TestCase
 {
     public function testProcessorLoader()
     {

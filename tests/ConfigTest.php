@@ -14,13 +14,14 @@ use Monolog\Registry;
 
 use Cascade\Config;
 use Cascade\Tests\Fixtures;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class ConfigTest
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
  */
-class ConfigTest extends \PHPUnit_Framework_TestCase
+class ConfigTest extends TestCase
 {
     /**
      * Testing contructor and load functions
@@ -76,10 +77,11 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test configure throwing an exception due to missing 'loggers' key
-     * @expectedException \RuntimeException
      */
     public function testConfigureWithNoLoggers()
     {
+        $this->expectException(\RuntimeException::class);
+
         $options = array();
 
         // Mocking the ConfigLoader with the load method

@@ -12,13 +12,14 @@ namespace Cascade\Tests\Config;
 
 use Cascade\Config\ConfigLoader;
 use Cascade\Tests\Fixtures;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class ConfigLoaderTest
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
  */
-class ConfigLoaderTest extends \PHPUnit_Framework_TestCase
+class ConfigLoaderTest extends TestCase
 {
     /**
      * Loader to test against
@@ -26,13 +27,13 @@ class ConfigLoaderTest extends \PHPUnit_Framework_TestCase
      */
     protected $loader = null;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setup();
         $this->loader = new ConfigLoader();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->loader = null;
         parent::tearDown();
