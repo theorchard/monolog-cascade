@@ -13,6 +13,7 @@ namespace Cascade\Tests\Config\Loader\ClassLoader\Resolver;
 use Cascade\Util;
 use Cascade\Config\Loader\ClassLoader\Resolver\ConstructorResolver;
 
+use PHPUnit\Framework\TestCase;
 use Symfony;
 
 /**
@@ -20,7 +21,7 @@ use Symfony;
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
  */
-class ConstructorResolverTest extends \PHPUnit_Framework_TestCase
+class ConstructorResolverTest extends TestCase
 {
     /**
      * Reflection class for which you want to resolve extra options
@@ -37,7 +38,7 @@ class ConstructorResolverTest extends \PHPUnit_Framework_TestCase
     /**
      * Set up function
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->class = 'Cascade\Tests\Fixtures\SampleClass';
         $this->resolver = new ConstructorResolver(new \ReflectionClass($this->class));
@@ -47,7 +48,7 @@ class ConstructorResolverTest extends \PHPUnit_Framework_TestCase
     /**
      * Tear down function
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->resolver = null;
         $this->class = null;

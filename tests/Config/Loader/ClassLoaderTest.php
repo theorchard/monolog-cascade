@@ -13,6 +13,7 @@ namespace Cascade\Tests\Config\Loader;
 use Cascade\Config\Loader\ClassLoader;
 use Cascade\Tests\Fixtures\DependentClass;
 use Cascade\Tests\Fixtures\SampleClass;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class ClassLoaderTest
@@ -20,12 +21,12 @@ use Cascade\Tests\Fixtures\SampleClass;
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
  * @author Dom Morgan <dom@d3r.com>
  */
-class ClassLoaderTest extends \PHPUnit_Framework_TestCase
+class ClassLoaderTest extends TestCase
 {
     /**
      * Set up function
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
     }
@@ -33,7 +34,7 @@ class ClassLoaderTest extends \PHPUnit_Framework_TestCase
     /**
      * Tear down function
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         ClassLoader::$extraOptionHandlers = array();
         parent::tearDown();

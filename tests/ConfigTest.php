@@ -14,13 +14,14 @@ use Monolog\Registry;
 
 use Cascade\Config;
 use Cascade\Tests\Fixtures;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class ConfigTest
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
  */
-class ConfigTest extends \PHPUnit_Framework_TestCase
+class ConfigTest extends TestCase
 {
     /**
      * Testing contructor and load functions
