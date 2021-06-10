@@ -43,11 +43,10 @@ class PhpArrayTest extends TestCase
         $this->assertFalse($this->loader->supports(__DIR__.'/../../../Fixtures/fixture_config.json'));
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testThrowsExceptionWhenLoadingFileIfDoesNotReturnValidPhpArray()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $this->loader->load(__DIR__.'/../../../Fixtures/fixture_invalid_config.php');
     }
 

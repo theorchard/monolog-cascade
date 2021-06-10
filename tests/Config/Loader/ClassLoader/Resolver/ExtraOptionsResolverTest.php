@@ -14,6 +14,7 @@ use Cascade\Config\Loader\ClassLoader\Resolver\ExtraOptionsResolver;
 
 use PHPUnit\Framework\TestCase;
 use Symfony;
+use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 
 /**
  * Class ExtraOptionsResolverTest
@@ -169,10 +170,11 @@ class ExtraOptionsResolverTest extends TestCase
      *
      * @param  array $invalidOptions Array of invalid options
      * @dataProvider invalidOptionsProvider
-     * @expectedException Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException
      */
     public function testResolveWithInvalidOptions($invalidOptions)
     {
+        $this->expectException(UndefinedOptionsException::class);
+
         $this->resolver->resolve($invalidOptions);
     }
 }

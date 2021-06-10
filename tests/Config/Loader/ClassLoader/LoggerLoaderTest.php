@@ -57,11 +57,10 @@ class LoggerLoaderTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testResolveHandlersWithMismatch()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $options = array(
             'handlers' => array('unexisting_handler', 'test_handler_2')
         );
@@ -96,11 +95,10 @@ class LoggerLoaderTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testResolveProcessorsWithMismatch()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $dummyClosure = function () {
             // Empty function
         };

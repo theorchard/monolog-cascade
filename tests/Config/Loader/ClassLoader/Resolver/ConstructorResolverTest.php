@@ -15,6 +15,8 @@ use Cascade\Config\Loader\ClassLoader\Resolver\ConstructorResolver;
 
 use PHPUnit\Framework\TestCase;
 use Symfony;
+use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
+use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 
 /**
  * Class ConstructorResolverTest
@@ -184,10 +186,11 @@ class ConstructorResolverTest extends TestCase
      *
      * @param  array $incompleteOptions Array of invalid options
      * @dataProvider missingOptionsProvider
-     * @expectedException Symfony\Component\OptionsResolver\Exception\MissingOptionsException
      */
     public function testResolveWithMissingOptions(array $incompleteOptions)
     {
+        $this->expectException(MissingOptionsException::class);
+
         $this->resolver->resolve($incompleteOptions);
     }
 
@@ -223,10 +226,11 @@ class ConstructorResolverTest extends TestCase
      *
      * @param  array $invalidOptions Array of invalid options
      * @dataProvider invalidOptionsProvider
-     * @expectedException Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException
      */
     public function testResolveWithInvalidOptions($invalidOptions)
     {
+        $this->expectException(UndefinedOptionsException::class);
+
         $this->resolver->resolve($invalidOptions);
     }
 }

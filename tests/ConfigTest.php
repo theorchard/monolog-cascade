@@ -77,10 +77,11 @@ class ConfigTest extends TestCase
 
     /**
      * Test configure throwing an exception due to missing 'loggers' key
-     * @expectedException \RuntimeException
      */
     public function testConfigureWithNoLoggers()
     {
+        $this->expectException(\RuntimeException::class);
+
         $options = array();
 
         // Mocking the ConfigLoader with the load method

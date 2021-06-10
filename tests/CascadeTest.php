@@ -48,11 +48,10 @@ class CascadeTest extends TestCase
         $this->assertSame($logger, $logger2);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testRegistryWithInvalidName()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         Cascade::getLogger(null);
     }
 

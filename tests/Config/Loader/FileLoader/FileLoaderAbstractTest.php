@@ -152,11 +152,11 @@ class FileLoaderAbstractTest extends TestCase
 
     /**
      * Test loading an invalid file
-     *
-     * @expectedException \RuntimeException
      */
     public function testloadFileFromInvalidFile()
     {
+        $this->expectException(\RuntimeException::class);
+
         // mocking the file system from a 'config_dir' base dir
         $root = vfsStream::setup('config_dir');
 
