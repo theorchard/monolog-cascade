@@ -14,15 +14,16 @@ use Monolog\Logger;
 use Monolog\Registry;
 
 use Cascade\Cascade;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class CascadeTest
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
  */
-class CascadeTest extends \PHPUnit_Framework_TestCase
+class CascadeTest extends TestCase
 {
-    public function teardown()
+    public function teardown(): void
     {
         Registry::clear();
         parent::teardown();
@@ -47,11 +48,10 @@ class CascadeTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($logger, $logger2);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testRegistryWithInvalidName()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         Cascade::getLogger(null);
     }
 

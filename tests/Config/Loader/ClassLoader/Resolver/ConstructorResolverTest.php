@@ -13,14 +13,17 @@ namespace Cascade\Tests\Config\Loader\ClassLoader\Resolver;
 use Cascade\Util;
 use Cascade\Config\Loader\ClassLoader\Resolver\ConstructorResolver;
 
+use PHPUnit\Framework\TestCase;
 use Symfony;
+use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
+use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 
 /**
  * Class ConstructorResolverTest
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
  */
-class ConstructorResolverTest extends \PHPUnit_Framework_TestCase
+class ConstructorResolverTest extends TestCase
 {
     /**
      * Reflection class for which you want to resolve extra options
@@ -37,7 +40,7 @@ class ConstructorResolverTest extends \PHPUnit_Framework_TestCase
     /**
      * Set up function
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->class = 'Cascade\Tests\Fixtures\SampleClass';
         $this->resolver = new ConstructorResolver(new \ReflectionClass($this->class));
@@ -47,7 +50,7 @@ class ConstructorResolverTest extends \PHPUnit_Framework_TestCase
     /**
      * Tear down function
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->resolver = null;
         $this->class = null;
@@ -183,10 +186,11 @@ class ConstructorResolverTest extends \PHPUnit_Framework_TestCase
      *
      * @param  array $incompleteOptions Array of invalid options
      * @dataProvider missingOptionsProvider
-     * @expectedException Symfony\Component\OptionsResolver\Exception\MissingOptionsException
      */
     public function testResolveWithMissingOptions(array $incompleteOptions)
     {
+        $this->expectException(MissingOptionsException::class);
+
         $this->resolver->resolve($incompleteOptions);
     }
 
@@ -222,10 +226,11 @@ class ConstructorResolverTest extends \PHPUnit_Framework_TestCase
      *
      * @param  array $invalidOptions Array of invalid options
      * @dataProvider invalidOptionsProvider
-     * @expectedException Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException
      */
     public function testResolveWithInvalidOptions($invalidOptions)
     {
+        $this->expectException(UndefinedOptionsException::class);
+
         $this->resolver->resolve($invalidOptions);
     }
 }

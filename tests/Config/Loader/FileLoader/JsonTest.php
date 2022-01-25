@@ -11,27 +11,28 @@
 namespace Cascade\Tests\Config\Loader\FileLoader;
 
 use Cascade\Tests\Fixtures;
+use PHPUnit\Framework\MockObject\MockBuilder;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class JsonTest
  *
  * @author Raphael Antonmattei <rantonmattei@theorchard.com>
  */
-class JsonTest extends \PHPUnit_Framework_TestCase
+class JsonTest extends TestCase
 {
     /**
      * JSON loader mock builder
-     * @var \PHPUnit_Framework_MockObject_MockBuilder
+     * @var MockBuilder
      */
     protected $jsonLoader = null;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
-        $fileLocatorMock = $this->getMock(
-            'Symfony\Component\Config\FileLocatorInterface'
-        );
+        $fileLocatorMock = $this->getMockBuilder('Symfony\Component\Config\FileLocatorInterface')
+                                ->getMock();
 
         $this->jsonLoader = $this->getMockBuilder(
             'Cascade\Config\Loader\FileLoader\Json'
@@ -41,7 +42,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
             ->getMock();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->jsonLoader = null;
         parent::tearDown();
