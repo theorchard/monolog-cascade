@@ -7,12 +7,6 @@
         </testsuite>
     </testsuites>
 
-    <filter>
-        <whitelist>
-            <directory suffix=".php">src/</directory>
-        </whitelist>
-    </filter>
-
     <php>
         <ini name="date.timezone" value="UTC"/>
     </php>

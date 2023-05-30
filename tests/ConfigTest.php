@@ -30,7 +30,7 @@ class ConfigTest extends TestCase
     {
         $mock = $this->getMockBuilder('Cascade\Config\ConfigLoader')
             ->disableOriginalConstructor()
-            ->setMethods(array('load'))
+            ->onlyMethods(array('load'))
             ->getMock();
 
         $array = Fixtures::getSamplePhpArray();
@@ -50,7 +50,7 @@ class ConfigTest extends TestCase
         // Mocking the ConfigLoader with the load method
         $configLoader = $this->getMockBuilder('Cascade\Config\ConfigLoader')
             ->disableOriginalConstructor()
-            ->setMethods(array('load'))
+            ->onlyMethods(array('load'))
             ->getMock();
 
         $configLoader->method('load')->willReturn($options);
@@ -58,7 +58,7 @@ class ConfigTest extends TestCase
         // Mocking the config object and set expectations for the configure methods
         $config = $this->getMockBuilder('Cascade\Config')
             ->setConstructorArgs(array($options, $configLoader))
-            ->setMethods(array(
+            ->onlyMethods(array(
                     'configureFormatters',
                     'configureProcessors',
                     'configureHandlers',
@@ -87,7 +87,7 @@ class ConfigTest extends TestCase
         // Mocking the ConfigLoader with the load method
         $configLoader = $this->getMockBuilder('Cascade\Config\ConfigLoader')
             ->disableOriginalConstructor()
-            ->setMethods(array('load'))
+            ->onlyMethods(array('load'))
             ->getMock();
 
         $configLoader->method('load')->willReturn($options);
@@ -95,7 +95,7 @@ class ConfigTest extends TestCase
         // Mocking the config object
         $config = $this->getMockBuilder('Cascade\Config')
             ->setConstructorArgs(array($options, $configLoader))
-            ->setMethods(null)
+            ->onlyMethods([])
             ->getMock();
 
         $config->load();
@@ -112,7 +112,7 @@ class ConfigTest extends TestCase
         // Mocking the ConfigLoader with the load method
         $configLoader = $this->getMockBuilder('Cascade\Config\ConfigLoader')
             ->disableOriginalConstructor()
-            ->setMethods(array('load'))
+            ->onlyMethods(array('load'))
             ->getMock();
 
         $configLoader->method('load')->willReturn($options);
